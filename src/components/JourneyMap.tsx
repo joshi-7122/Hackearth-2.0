@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { schedule } from '@/data/schedule';
 import { prefersReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/lib/cn';
@@ -36,19 +36,54 @@ interface Pt {
   right?: boolean;
 }
 
+const DEFAULT_ROAD_DATA = {
+  vertical: {
+    length: 962.4,
+    checkpoints: [
+      { x: 200, y: 50, right: false },
+      { x: 277.6, y: 224.4, right: true },
+      { x: 91.8, y: 360.4, right: false },
+      { x: 274.1, y: 501.9, right: false },
+      { x: 200, y: 670, right: false },
+    ],
+  },
+  horizontal: {
+    length: 797.4,
+    checkpoints: [
+      { x: 40, y: 96, right: false },
+      { x: 224.5, y: 42.4, right: false },
+      { x: 406.4, y: 117, right: false },
+      { x: 588.8, y: 45.4, right: false },
+      { x: 780, y: 64, right: true },
+    ],
+  },
+} as const;
+
 /** Fractional checkpoint index (0 … n-1) from where the cards sit in the viewport. */
 function progressFromCards(cards: (HTMLElement | null)[]): number {
-  const anchor = window.innerHeight * 0.5;
+  if (!cards.length || !cards[0]) return 0;
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+  // On desktop: center of the screen.
+  // On mobile: below the sticky map header (~200px) down to the bottom.
+  const anchor = isDesktop
+    ? window.innerHeight * 0.48
+    : 180 + (window.innerHeight - 180) * 0.42;
+
   const centers = cards.map((c) => {
     if (!c) return 0;
     const r = c.getBoundingClientRect();
     return r.top + r.height / 2;
   });
+
   if (anchor <= centers[0]!) return 0;
+
   for (let i = 0; i < centers.length - 1; i++) {
     const a = centers[i]!;
     const b = centers[i + 1]!;
-    if (anchor >= a && anchor <= b) return i + (anchor - a) / (b - a);
+    if (anchor >= a && anchor <= b) {
+      const denom = b - a;
+      return denom > 0 ? i + (anchor - a) / denom : i;
+    }
   }
   return centers.length - 1;
 }
@@ -65,39 +100,63 @@ function Road({
   onPick: (i: number) => void;
 }) {
   const road = ROADS[orientation];
+  const defaultData = DEFAULT_ROAD_DATA[orientation];
   const pathRef = useRef<SVGPathElement>(null);
-  const [len, setLen] = useState(0);
-  const [pins, setPins] = useState<Pt[]>([]);
-  const [marker, setMarker] = useState<Pt>({ x: 0, y: 0 });
+  const [len, setLen] = useState<number>(defaultData.length);
+  const [pins, setPins] = useState<Pt[]>([...defaultData.checkpoints]);
   const n = schedule.length;
 
   useLayoutEffect(() => {
     const p = pathRef.current;
     if (!p) return;
-    const L = p.getTotalLength();
-    setLen(L);
-    setPins(
-      schedule.map((_, i) => {
-        const at = (i / (n - 1)) * L;
-        const pt = p.getPointAtLength(at);
-        // Look a little along the road; put the label on the opposite side.
-        const ahead = p.getPointAtLength(Math.min(L, at + 40));
-        const behind = p.getPointAtLength(Math.max(0, at - 40));
-        const dir = i < n - 1 ? ahead.x - pt.x : behind.x - pt.x;
-        return { x: pt.x, y: pt.y, right: dir < 0 };
-      }),
-    );
+    const measure = () => {
+      try {
+        const L = p.getTotalLength();
+        if (L > 0) {
+          setLen(L);
+          setPins(
+            schedule.map((_, i) => {
+              const at = (i / (n - 1)) * L;
+              const pt = p.getPointAtLength(at);
+              const ahead = p.getPointAtLength(Math.min(L, at + 40));
+              const behind = p.getPointAtLength(Math.max(0, at - 40));
+              const dir = i < n - 1 ? ahead.x - pt.x : behind.x - pt.x;
+              return { x: pt.x, y: pt.y, right: dir < 0 };
+            }),
+          );
+        }
+      } catch {}
+    };
+
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
   }, [n]);
 
-  useLayoutEffect(() => {
+  // Compute marker position directly to avoid an extra state re-render loop on every frame
+  const marker = useMemo<Pt>(() => {
     const p = pathRef.current;
-    if (!p || !len) return;
-    const pt = p.getPointAtLength((progress / (n - 1)) * len);
-    setMarker({ x: pt.x, y: pt.y });
-  }, [progress, len, n]);
+    const effectiveLen = len || defaultData.length;
+    if (p && len > 0) {
+      try {
+        const pt = p.getPointAtLength((progress / (n - 1)) * effectiveLen);
+        return { x: pt.x, y: pt.y };
+      } catch {}
+    }
+    // Instant fallback interpolation between checkpoints
+    const seg = Math.min(n - 2, Math.max(0, Math.floor(progress)));
+    const frac = Math.min(1, Math.max(0, progress - seg));
+    const p1 = pins[seg] || defaultData.checkpoints[seg]!;
+    const p2 = pins[seg + 1] || defaultData.checkpoints[seg + 1]!;
+    return {
+      x: p1.x + (p2.x - p1.x) * frac,
+      y: p1.y + (p2.y - p1.y) * frac,
+    };
+  }, [progress, len, pins, n, defaultData]);
 
   const vertical = orientation === 'vertical';
-  const filled = len ? (progress / (n - 1)) * len : 0;
+  const effectiveLen = len || defaultData.length;
+  const filled = (progress / (n - 1)) * effectiveLen;
 
   return (
     <svg viewBox={road.viewBox} className="size-full overflow-visible" role="group" aria-label="Journey map">
@@ -132,13 +191,13 @@ function Road({
         stroke={`url(#road-${orientation})`}
         strokeWidth={vertical ? 6 : 5}
         strokeLinecap="round"
-        strokeDasharray={`${len} ${len}`}
-        strokeDashoffset={len - filled}
+        strokeDasharray={`${effectiveLen} ${effectiveLen}`}
+        strokeDashoffset={Math.max(0, effectiveLen - filled)}
       />
 
       {/* Checkpoint pins (also a nav) */}
       {pins.map((p, i) => {
-        const reached = progress >= i - 0.02;
+        const reached = progress >= i - 0.05;
         const isActive = i === active;
         const item = schedule[i]!;
         const labelRight = !!p.right;
@@ -160,7 +219,14 @@ function Road({
             }}
           >
             {isActive && (
-              <circle r={vertical ? 30 : 24} fill="none" stroke="var(--color-brand)" strokeWidth="2" opacity="0.5" className="origin-center animate-[pin-ping_1.8s_ease-out_infinite] motion-reduce:animate-none" />
+              <circle
+                r={vertical ? 30 : 24}
+                fill="none"
+                stroke="var(--color-brand)"
+                strokeWidth="2"
+                opacity="0.5"
+                className="origin-center animate-[pin-ping_1.8s_ease-out_infinite] motion-reduce:animate-none"
+              />
             )}
             <circle
               r={vertical ? 19 : 15}
@@ -208,13 +274,11 @@ function Road({
       })}
 
       {/* Traveller marker */}
-      {len > 0 && (
-        <g transform={`translate(${marker.x} ${marker.y})`} aria-hidden="true">
-          <circle r={vertical ? 42 : 30} fill={`url(#glow-${orientation})`} />
-          <circle r={vertical ? 10 : 8} fill="var(--color-card)" stroke="var(--color-brand)" strokeWidth="3" />
-          <circle r={vertical ? 4 : 3} fill="var(--color-brand)" />
-        </g>
-      )}
+      <g transform={`translate(${marker.x} ${marker.y})`} aria-hidden="true">
+        <circle r={vertical ? 42 : 30} fill={`url(#glow-${orientation})`} />
+        <circle r={vertical ? 10 : 8} fill="var(--color-card)" stroke="var(--color-brand)" strokeWidth="3" />
+        <circle r={vertical ? 4 : 3} fill="var(--color-brand)" />
+      </g>
     </svg>
   );
 }
@@ -233,20 +297,22 @@ export function JourneyMap() {
     const reduced = prefersReducedMotion();
     const tick = () => {
       const diff = target.current - current.current;
-      if (Math.abs(diff) < 0.001 || reduced) {
+      if (Math.abs(diff) < 0.002 || reduced) {
         current.current = target.current;
         setProgress(current.current);
         raf.current = 0;
         return;
       }
-      current.current += diff * 0.14;
+      current.current += diff * 0.16;
       setProgress(current.current);
       raf.current = requestAnimationFrame(tick);
     };
+
     const onScroll = () => {
       target.current = progressFromCards(cardRefs.current);
       if (!raf.current) raf.current = requestAnimationFrame(tick);
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
@@ -261,8 +327,15 @@ export function JourneyMap() {
     const el = cardRefs.current[i];
     if (!el) return;
     const r = el.getBoundingClientRect();
-    const y = window.scrollY + r.top + r.height / 2 - window.innerHeight / 2;
-    window.scrollTo({ top: y, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    const isDesktop = window.innerWidth >= 1024;
+    let targetY: number;
+    if (isDesktop) {
+      targetY = window.scrollY + r.top - (window.innerHeight - r.height) / 2;
+    } else {
+      // Offset for sticky navbar + mobile map strip (~190px) + margin
+      targetY = window.scrollY + r.top - 195;
+    }
+    window.scrollTo({ top: Math.max(0, targetY), behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   }, []);
 
   const chips = (
@@ -355,7 +428,7 @@ export function JourneyMap() {
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              className="flex min-h-[auto] sm:min-h-[50vh] items-center py-4 sm:py-6 lg:min-h-[78vh]"
+              className="flex min-h-[50vh] sm:min-h-[55vh] items-center py-5 sm:py-6 lg:min-h-[75vh]"
             >
               <article
                 aria-current={isActive ? 'step' : undefined}

@@ -5,22 +5,59 @@ export function useActiveSection(ids: string[]): string | null {
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    const els = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-    if (!els.length) return;
+    const update = () => {
+      const scrollY = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const innerHeight = window.innerHeight;
 
-    const visible = new Map<string, boolean>();
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) visible.set(e.target.id, e.isIntersecting);
-        const current = ids.find((id) => visible.get(id));
-        setActive(current ?? null);
-      },
-      { rootMargin: '-30% 0px -65% 0px' },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+      // Scrolled to bottom: activate the last section
+      if (scrollY + innerHeight >= scrollHeight - 80) {
+        setActive(ids[ids.length - 1] ?? null);
+        return;
+      }
+
+      // At the very top (hero area): no nav item active
+      if (scrollY < 120) {
+        setActive(null);
+        return;
+      }
+
+      // Upper third activation line
+      const activationLine = scrollY + innerHeight * 0.35;
+      let currentId: string | null = null;
+
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.offsetTop;
+        if (top <= activationLine) {
+          currentId = id;
+        } else {
+          break;
+        }
+      }
+
+      setActive(currentId);
+    };
+
+    let raf = 0;
+    const onScroll = () => {
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          update();
+          raf = 0;
+        });
+      }
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [ids]);
 
   return active;

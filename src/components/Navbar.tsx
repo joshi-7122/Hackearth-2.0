@@ -220,7 +220,10 @@ export function Navbar() {
               >
                 <a
                   href={`#${item.id}`}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    document.body.style.overflow = '';
+                    setOpen(false);
+                  }}
                   className="flex items-center justify-between py-3 font-display text-[1.4rem] xs:text-[1.6rem] sm:text-[1.75rem] text-indigo"
                 >
                   {item.label}
@@ -230,7 +233,7 @@ export function Navbar() {
             ))}
           </ul>
           <div className="mt-4">
-            <Button href={registerHref} external={external} size="lg" fullWidth onClick={() => setOpen(false)}>
+            <Button href={registerHref} external={external} size="lg" fullWidth onClick={() => { document.body.style.overflow = ''; setOpen(false); }}>
               Register now
             </Button>
           </div>
