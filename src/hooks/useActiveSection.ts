@@ -29,11 +29,10 @@ export function useActiveSection(ids: string[]): string | null {
       for (const id of ids) {
         const el = document.getElementById(id);
         if (!el) continue;
-        const top = el.offsetTop;
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + scrollY;
         if (top <= activationLine) {
           currentId = id;
-        } else {
-          break;
         }
       }
 

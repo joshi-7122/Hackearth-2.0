@@ -41,9 +41,8 @@ const DEFAULT_ROAD_DATA = {
     length: 962.4,
     checkpoints: [
       { x: 200, y: 50, right: false },
-      { x: 277.6, y: 224.4, right: true },
-      { x: 91.8, y: 360.4, right: false },
-      { x: 274.1, y: 501.9, right: false },
+      { x: 275, y: 240, right: true },
+      { x: 130, y: 440, right: false },
       { x: 200, y: 670, right: false },
     ],
   },
@@ -51,9 +50,8 @@ const DEFAULT_ROAD_DATA = {
     length: 797.4,
     checkpoints: [
       { x: 40, y: 96, right: false },
-      { x: 224.5, y: 42.4, right: false },
-      { x: 406.4, y: 117, right: false },
-      { x: 588.8, y: 45.4, right: false },
+      { x: 260, y: 55, right: false },
+      { x: 510, y: 95, right: false },
       { x: 780, y: 64, right: true },
     ],
   },
@@ -102,9 +100,9 @@ function Road({
   const road = ROADS[orientation];
   const defaultData = DEFAULT_ROAD_DATA[orientation];
   const pathRef = useRef<SVGPathElement>(null);
-  const [len, setLen] = useState<number>(defaultData.length);
-  const [pins, setPins] = useState<Pt[]>([...defaultData.checkpoints]);
   const n = schedule.length;
+  const [len, setLen] = useState<number>(defaultData.length);
+  const [pins, setPins] = useState<Pt[]>(() => [...defaultData.checkpoints.slice(0, n)]);
 
   useLayoutEffect(() => {
     const p = pathRef.current;
@@ -116,7 +114,7 @@ function Road({
           setLen(L);
           setPins(
             schedule.map((_, i) => {
-              const at = (i / (n - 1)) * L;
+              const at = (i / Math.max(1, n - 1)) * L;
               const pt = p.getPointAtLength(at);
               const ahead = p.getPointAtLength(Math.min(L, at + 40));
               const behind = p.getPointAtLength(Math.max(0, at - 40));
@@ -139,15 +137,17 @@ function Road({
     const effectiveLen = len || defaultData.length;
     if (p && len > 0) {
       try {
-        const pt = p.getPointAtLength((progress / (n - 1)) * effectiveLen);
-        return { x: pt.x, y: pt.y };
+        const pt = p.getPointAtLength((progress / Math.max(1, n - 1)) * effectiveLen);
+        if (pt && !isNaN(pt.x) && !isNaN(pt.y)) {
+          return { x: pt.x, y: pt.y };
+        }
       } catch {}
     }
     // Instant fallback interpolation between checkpoints
-    const seg = Math.min(n - 2, Math.max(0, Math.floor(progress)));
+    const seg = Math.min(Math.max(0, n - 2), Math.max(0, Math.floor(progress)));
     const frac = Math.min(1, Math.max(0, progress - seg));
-    const p1 = pins[seg] || defaultData.checkpoints[seg]!;
-    const p2 = pins[seg + 1] || defaultData.checkpoints[seg + 1]!;
+    const p1 = pins[seg] ?? defaultData.checkpoints[seg] ?? { x: 0, y: 0 };
+    const p2 = pins[seg + 1] ?? defaultData.checkpoints[seg + 1] ?? p1;
     return {
       x: p1.x + (p2.x - p1.x) * frac,
       y: p1.y + (p2.y - p1.y) * frac,
@@ -196,10 +196,11 @@ function Road({
       />
 
       {/* Checkpoint pins (also a nav) */}
-      {pins.map((p, i) => {
+      {schedule.map((item, i) => {
+        const p = pins[i] ?? defaultData.checkpoints[i];
+        if (!p) return null;
         const reached = progress >= i - 0.05;
         const isActive = i === active;
-        const item = schedule[i]!;
         const labelRight = !!p.right;
         return (
           <g
@@ -371,9 +372,9 @@ export function JourneyMap() {
         </div>
         <div className="mt-1 flex items-center justify-between text-xs">
           <span className="font-semibold text-indigo">
-            {String(active + 1).padStart(2, '0')} · {schedule[active]!.short ?? schedule[active]!.phase}
+            {String(active + 1).padStart(2, '0')} · {schedule[active]?.short ?? schedule[active]?.phase ?? ''}
           </span>
-          <span className="font-mono text-ink-muted">{schedule[active]!.date}</span>
+          <span className="font-mono text-ink-muted">{schedule[active]?.date ?? ''}</span>
         </div>
         <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {schedule.map((s, i) => (
@@ -470,13 +471,13 @@ export function JourneyMap() {
                     ))}
                   </ul>
                 )}
-                {i < n - 1 && (
+                {i < n - 1 && schedule[i + 1] && (
                   <button
                     type="button"
                     onClick={() => goTo(i + 1)}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-deep hover:underline"
                   >
-                    Next checkpoint: {schedule[i + 1]!.short ?? schedule[i + 1]!.phase}
+                    Next checkpoint: {schedule[i + 1]?.short ?? schedule[i + 1]?.phase}
                     <Icon name="arrowRight" size={15} />
                   </button>
                 )}
