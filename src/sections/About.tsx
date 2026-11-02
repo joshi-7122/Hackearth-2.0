@@ -44,14 +44,14 @@ export function About() {
           </div>
 
           <div className="lg:col-span-7 lg:pt-12">
-            <Reveal as="blockquote" className="relative border-l-2 border-brand pl-6 md:pl-8">
+            <Reveal as="blockquote" className="relative border-l-2 border-brand pl-4 sm:pl-6 md:pl-8">
               <p className="eyebrow">Theme</p>
-              <p className="mt-3 font-display text-[clamp(1.6rem,3vw,2.5rem)] leading-[1.15] text-indigo">
+              <p className="mt-3 font-display text-[clamp(1.35rem,3.8vw,2.5rem)] leading-[1.15] text-indigo">
                 “{hackathonInfo.theme}”
               </p>
             </Reveal>
 
-            <dl className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+            <dl className="mt-10 sm:mt-14 grid gap-x-10 gap-y-8 sm:gap-y-10 sm:grid-cols-2">
               {pillars.map((p, i) => (
                 <Reveal key={p.q} i={i} className="border-t border-line pt-5">
                   <dt className="eyebrow flex items-center gap-2">

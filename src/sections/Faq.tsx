@@ -20,7 +20,7 @@ export function Faq() {
               eyebrow="FAQ"
               lines={['Questions,', <span className="text-brand">answered.</span>]}
             />
-            <Reveal className="mt-10 rounded-(--radius-card) border border-line bg-card p-6">
+            <Reveal className="mt-8 sm:mt-10 rounded-(--radius-card) border border-line bg-card p-4 xs:p-6">
               <p className="font-medium text-ink">Still stuck?</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
                 Email the organizing team, or follow updates in the official WhatsApp group (mandatory for participants).

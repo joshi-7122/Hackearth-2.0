@@ -35,7 +35,7 @@ export function Footer() {
   const organizingBodies = organizers.filter((o) => o.role !== 'Affiliation');
 
   return (
-    <footer id="contact" className="theme-plum relative overflow-hidden border-t border-line pt-20">
+    <footer id="contact" className="theme-plum relative overflow-hidden border-t border-line pt-14 sm:pt-20">
       <div className="container-x">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
@@ -45,7 +45,7 @@ export function Footer() {
                 <span className="text-blush">{info.prefix}</span> {info.name} {info.edition}
               </span>
             </span>
-            <p className="mt-5 font-display text-2xl text-ink">
+            <p className="mt-4 sm:mt-5 font-display text-xl sm:text-2xl text-ink">
               Build. Break. <span className="text-blush">Rebuild.</span>
             </p>
             <p className="mt-3 max-w-sm leading-relaxed text-ink-muted">{info.theme}</p>
@@ -67,7 +67,7 @@ export function Footer() {
             </div>
           </div>
 
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-[0.8fr_1.1fr_1.5fr] md:col-span-7">
+          <nav aria-label="Footer" className="grid grid-cols-1 xs:grid-cols-2 gap-8 sm:grid-cols-[0.8fr_1.1fr_1.5fr] md:col-span-7">
             <div>
               <h2 className="eyebrow">Event</h2>
               <ul className="mt-5 space-y-3">
@@ -89,7 +89,7 @@ export function Footer() {
                 ))}
               </ul>
             </div>
-            <div className="col-span-2 sm:col-span-1">
+            <div className="col-span-1 xs:col-span-2 sm:col-span-1">
               <h2 className="eyebrow">Contact</h2>
               <ul className="mt-5 space-y-4 text-ink-muted">
                 <li className="flex gap-2.5">
@@ -122,11 +122,11 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-16 flex flex-col-reverse items-start justify-between gap-4 border-t border-line py-6 text-sm text-ink-subtle sm:flex-row sm:items-center">
+        <div className="mt-12 sm:mt-16 flex flex-col-reverse items-start justify-between gap-4 border-t border-line py-6 text-sm text-ink-subtle sm:flex-row sm:items-center">
           <p>
             © {year} {info.prefix} {info.name} {info.edition} · IEEE Galgotias University Student Branch
           </p>
-          <ul className="flex gap-5">
+          <ul className="flex flex-wrap gap-4 sm:gap-5">
             {legal.map((l) => (
               <li key={l.label}>
                 <FooterLink {...l} />
@@ -138,7 +138,7 @@ export function Footer() {
 
       <p
         aria-hidden="true"
-        className="pointer-events-none -mb-[0.18em] text-center font-display text-[clamp(4rem,18vw,18rem)] leading-[0.85] text-transparent select-none [-webkit-text-stroke:1.2px_rgb(246_201_208/0.18)]"
+        className="pointer-events-none -mb-[0.18em] text-center font-display text-[clamp(3.5rem,15vw,18rem)] leading-[0.85] text-transparent select-none [-webkit-text-stroke:1.2px_rgb(246_201_208/0.18)]"
       >
         HackEarth
       </p>

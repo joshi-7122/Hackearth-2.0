@@ -52,7 +52,7 @@ export function Hero({ ready }: { ready: boolean }) {
                   alt=""
                   width={629}
                   height={487}
-                  className="h-[clamp(5.5rem,10vw,8.75rem)] w-auto dark:hidden"
+                  className="h-[clamp(4.25rem,10vw,8.75rem)] w-auto dark:hidden"
                   fetchPriority="high"
                 />
                 <img
@@ -60,27 +60,27 @@ export function Hero({ ready }: { ready: boolean }) {
                   alt=""
                   width={629}
                   height={487}
-                  className="hidden h-[clamp(5.5rem,10vw,8.75rem)] w-auto dark:block"
+                  className="hidden h-[clamp(4.25rem,10vw,8.75rem)] w-auto dark:block"
                 />
               </span>
             </span>
             <span aria-hidden="true" className="line-mask" style={{ ['--i' as string]: 1 }}>
-              <span className="text-display relative inline-block pr-[0.55em] text-[clamp(2.5rem,12vw,4.5rem)] leading-[0.95] lg:text-[clamp(3.3rem,8vw,7.75rem)]">
+              <span className="text-display relative inline-block pr-[0.55em] text-[clamp(2.2rem,11vw,4.5rem)] leading-[0.95] lg:text-[clamp(3.3rem,8vw,7.75rem)]">
                 {info.name}
                 <Leaf className="absolute top-[-0.05em] right-0 w-[0.62em]" />
               </span>
             </span>
             <span aria-hidden="true" className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2" style={{ ['--i' as string]: 2 }}>
               <span className="line-mask" style={{ ['--i' as string]: 2 }}>
-                <span className="text-display text-[clamp(2.4rem,4.6vw,4.4rem)] leading-none">{info.edition}</span>
+                <span className="text-display text-[clamp(2rem,4.6vw,4.4rem)] leading-none">{info.edition}</span>
               </span>
               <span
                 data-reveal=""
                 style={{ ['--i' as string]: 3 }}
-                className="relative inline-grid place-items-center px-6 py-1.5"
+                className="relative inline-grid place-items-center px-4 py-1 sm:px-6 sm:py-1.5"
               >
                 <img src="/brand/brush.webp" alt="" className="absolute inset-0 size-full object-fill" />
-                <span className="text-display relative text-[clamp(1.9rem,3.6vw,3.3rem)] leading-none !text-[#fcf7eb]">
+                <span className="text-display relative text-[clamp(1.6rem,3.6vw,3.3rem)] leading-none !text-[#fcf7eb]">
                   {info.year}
                 </span>
               </span>
@@ -162,15 +162,16 @@ export function Hero({ ready }: { ready: boolean }) {
         <dl
           data-reveal=""
           style={{ ['--i' as string]: 7 }}
-          className="grid grid-cols-2 overflow-hidden rounded-(--radius-card) border border-line bg-card/85 shadow-(--shadow-card) backdrop-blur-md lg:grid-cols-4"
+          className="grid grid-cols-1 xs:grid-cols-2 overflow-hidden rounded-(--radius-card) border border-line bg-card/85 shadow-(--shadow-card) backdrop-blur-md lg:grid-cols-4"
         >
           {facts.map((f, i) => (
             <div
               key={f.label}
               className={cn(
-                'flex items-start gap-3 p-4 md:p-5',
-                i % 2 === 1 && 'border-l border-line',
-                i >= 2 && 'border-t border-line lg:border-t-0',
+                'flex items-start gap-3 p-3.5 xs:p-4 md:p-5',
+                i > 0 && 'border-t border-line xs:border-t-0',
+                i % 2 === 1 && 'xs:border-l xs:border-line',
+                i >= 2 && 'xs:border-t xs:border-line lg:border-t-0',
                 i === 2 && 'lg:border-l',
               )}
             >

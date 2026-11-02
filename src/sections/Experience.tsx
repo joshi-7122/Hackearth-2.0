@@ -18,7 +18,7 @@ function StepCard({ s, i }: { s: (typeof journey)[number]; i: number }) {
   return (
     <article
       className={cn(
-        'flex h-full w-[78vw] max-w-[19rem] flex-col rounded-(--radius-card) border p-6 sm:w-[19rem] md:p-7',
+        'flex h-full w-[80vw] max-w-[19rem] flex-col rounded-(--radius-card) border p-5 xs:p-6 sm:w-[19rem] md:p-7',
         isLast ? 'border-brand bg-brand text-on-brand' : 'border-line bg-card shadow-(--shadow-card)',
       )}
     >
@@ -28,7 +28,7 @@ function StepCard({ s, i }: { s: (typeof journey)[number]; i: number }) {
         </span>
         <span className={cn('font-mono text-xs tracking-[0.16em]', isLast ? 'opacity-70' : 'text-ink-subtle')}>STEP</span>
       </div>
-      <span aria-hidden="true" className={cn('text-display mt-8 text-[4.5rem] leading-none', isLast ? '!text-on-brand' : 'text-outline')}>
+      <span aria-hidden="true" className={cn('text-display mt-6 xs:mt-8 text-[3.8rem] xs:text-[4.5rem] leading-none', isLast ? '!text-on-brand' : 'text-outline')}>
         {String(i + 1).padStart(2, '0')}
       </span>
       <h3 className={cn('mt-3 font-display text-[1.6rem] leading-tight', isLast ? '' : 'text-indigo')}>

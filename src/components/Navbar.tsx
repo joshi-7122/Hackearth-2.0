@@ -123,9 +123,9 @@ export function Navbar() {
             alt=""
             width={64}
             height={64}
-            className="size-11 shrink-0 rounded-full xs:size-[3.25rem] shadow-[0_8px_22px_-6px_rgb(48_21_87/0.55)] ring-1 ring-white/50 transition-transform duration-700 ease-(--ease-out-expo) group-hover:scale-105 group-hover:rotate-[8deg] sm:size-14 lg:size-14 xl:size-[4.25rem]"
+            className="size-9.5 shrink-0 rounded-full xs:size-11 sm:size-14 lg:size-14 xl:size-[4.25rem] shadow-[0_8px_22px_-6px_rgb(48_21_87/0.55)] ring-1 ring-white/50 transition-transform duration-700 ease-(--ease-out-expo) group-hover:scale-105 group-hover:rotate-[8deg]"
           />
-          <span className="font-display text-[1.05rem] leading-none whitespace-nowrap text-indigo xs:text-[1.25rem] sm:text-[1.5rem] lg:text-[1.3rem] xl:text-[1.75rem]">
+          <span className="font-display text-[0.92rem] leading-none whitespace-nowrap text-indigo xs:text-[1.12rem] sm:text-[1.45rem] lg:text-[1.3rem] xl:text-[1.75rem]">
             <span className="text-brand">{info.prefix}</span> {info.name}
             <span className="ml-1 text-brand">{info.edition}</span>
           </span>
@@ -185,7 +185,7 @@ export function Navbar() {
               aria-controls="mobile-menu"
               aria-label={open ? 'Close menu' : 'Open menu'}
               className={cn(
-                'grid size-10 shrink-0 place-items-center rounded-full border transition-colors sm:size-11 lg:hidden',
+                'grid size-9.5 xs:size-10 sm:size-11 shrink-0 place-items-center rounded-full border transition-colors lg:hidden',
                 open ? 'border-brand bg-brand text-on-brand' : 'border-line-strong bg-paper/70 text-indigo hover:border-brand/50',
               )}
             >
@@ -209,7 +209,7 @@ export function Navbar() {
         <div
           id="mobile-menu"
           hidden={!open}
-          className="mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-[1.75rem] border border-line-strong bg-card/95 p-5 shadow-[0_30px_60px_-30px_rgb(48_21_87/0.5)] backdrop-blur-xl lg:hidden"
+          className="mt-2.5 max-h-[calc(100dvh-5.5rem)] overflow-y-auto rounded-[1.75rem] border border-line-strong bg-card/95 p-4 sm:p-5 shadow-[0_30px_60px_-30px_rgb(48_21_87/0.5)] backdrop-blur-xl lg:hidden"
         >
           <ul className="flex flex-col">
             {navItems.map((item, i) => (
@@ -221,7 +221,7 @@ export function Navbar() {
                 <a
                   href={`#${item.id}`}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between py-3.5 font-display text-[1.75rem] text-indigo"
+                  className="flex items-center justify-between py-3 font-display text-[1.4rem] xs:text-[1.6rem] sm:text-[1.75rem] text-indigo"
                 >
                   {item.label}
                   <Icon name="arrowUpRight" size={18} className="text-brand" />
@@ -230,7 +230,7 @@ export function Navbar() {
             ))}
           </ul>
           <div className="mt-4">
-            <Button href={registerHref} external={external} size="lg" fullWidth>
+            <Button href={registerHref} external={external} size="lg" fullWidth onClick={() => setOpen(false)}>
               Register now
             </Button>
           </div>

@@ -33,13 +33,13 @@ function EventCard({ event, variant = 'card' }: { event: PastEvent; variant?: Va
           </span>
         )}
       </div>
-      <div className={variant === 'feature' ? 'p-6 md:p-8' : 'flex flex-1 flex-col justify-center p-5 md:p-6'}>
+      <div className={variant === 'feature' ? 'p-5 xs:p-6 md:p-8' : 'flex flex-1 flex-col justify-center p-4 xs:p-5 md:p-6'}>
         <p className="eyebrow text-[0.65rem] text-brand-deep">{event.tag}</p>
         <h3
           className={
             variant === 'feature'
-              ? 'mt-2 font-display text-[clamp(1.8rem,3vw,2.6rem)] text-indigo'
-              : 'mt-2 font-display text-2xl text-indigo'
+              ? 'mt-2 font-display text-[clamp(1.5rem,4vw,2.6rem)] text-indigo'
+              : 'mt-2 font-display text-xl xs:text-2xl text-indigo'
           }
         >
           {event.title}

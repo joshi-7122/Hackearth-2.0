@@ -16,7 +16,7 @@ export function Rules() {
             eyebrow="Eligibility & rules"
             lines={['Play fair.', <span className="text-brand">Build boldly.</span>]}
           />
-          <Reveal className="flex max-w-md items-start gap-3 rounded-(--radius-card) border border-brand/30 bg-brand/[0.06] p-4 lg:mb-2">
+          <Reveal className="flex w-full lg:max-w-md items-start gap-3 rounded-(--radius-card) border border-brand/30 bg-brand/[0.06] p-3.5 xs:p-4 lg:mb-2">
             <Icon name="users" size={20} className="mt-0.5 shrink-0 text-brand" />
             <p className="text-ink">
               <strong className="font-semibold text-indigo">Every team must have at least one female member.</strong>{' '}
@@ -26,7 +26,7 @@ export function Rules() {
         </div>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
-          <Reveal className="rounded-(--radius-panel) border border-line bg-card p-6 shadow-(--shadow-card) md:p-8">
+          <Reveal className="rounded-(--radius-panel) border border-line bg-card p-5 xs:p-6 shadow-(--shadow-card) md:p-8">
             <h3 className="flex items-center gap-3 font-display text-2xl text-indigo">
               <span className="grid size-10 place-items-center rounded-full bg-leaf/10 text-leaf">
                 <Icon name="check" size={18} strokeWidth={2.2} />
@@ -43,7 +43,7 @@ export function Rules() {
             </ul>
           </Reveal>
 
-          <Reveal i={1} className="rounded-(--radius-panel) border border-line bg-card p-6 shadow-(--shadow-card) md:p-8">
+          <Reveal i={1} className="rounded-(--radius-panel) border border-line bg-card p-5 xs:p-6 shadow-(--shadow-card) md:p-8">
             <h3 className="flex items-center gap-3 font-display text-2xl text-indigo">
               <span className="grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
                 <Icon name="shield" size={18} />
@@ -61,7 +61,7 @@ export function Rules() {
           </Reveal>
         </div>
 
-        <Reveal className="mt-5 grid gap-6 rounded-(--radius-panel) border border-line bg-card p-6 shadow-(--shadow-card) md:grid-cols-[1fr_auto] md:items-center md:p-8">
+        <Reveal className="mt-5 grid gap-6 rounded-(--radius-panel) border border-line bg-card p-5 xs:p-6 shadow-(--shadow-card) md:grid-cols-[1fr_auto] md:items-center md:p-8">
           <div>
             <p className="eyebrow text-brand-deep">Important</p>
             <ul className="mt-4 space-y-2.5">
@@ -77,7 +77,7 @@ export function Rules() {
             href={hackathonInfo.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0a7d43] px-6 py-3.5 font-semibold text-white shadow-[0_10px_24px_-12px_rgb(0_122_63/0.7)] transition-colors hover:bg-[#086a39]"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#0a7d43] px-5 xs:px-6 py-3.5 font-semibold text-white shadow-[0_10px_24px_-12px_rgb(0_122_63/0.7)] transition-colors hover:bg-[#086a39]"
           >
             <Icon name="whatsapp" size={18} />
             Join the WhatsApp group

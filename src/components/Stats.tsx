@@ -13,7 +13,7 @@ function StatValue({ stat, start }: { stat: Stat; start: boolean }) {
   if (!numeric) {
     const text = String(stat.value);
     return (
-      <span className={cn('whitespace-nowrap', isPlaceholder(text) ? 'text-[clamp(1.4rem,3vw,2.2rem)]' : 'text-[0.7em]')}>
+      <span className={cn('break-words', isPlaceholder(text) ? 'text-[clamp(1.2rem,2.8vw,2.2rem)]' : 'text-[0.72em] sm:text-[0.7em]')}>
         <Txt>{text}</Txt>
       </span>
     );
@@ -35,15 +35,15 @@ export function Stats() {
         <div
           key={s.label}
           className={cn(
-            'flex flex-col-reverse gap-3 border-b border-line py-8 md:py-10',
-            i % 2 === 1 && 'border-l pl-5 md:pl-8',
-            i % 2 === 0 && 'pr-5 md:pr-8',
+            'flex flex-col-reverse gap-2 xs:gap-3 border-b border-line py-6 xs:py-8 md:py-10',
+            i % 2 === 1 && 'border-l pl-3.5 xs:pl-5 md:pl-8',
+            i % 2 === 0 && 'pr-3.5 xs:pr-5 md:pr-8',
             i >= 1 && 'lg:border-l lg:pl-8',
             'lg:border-b-0',
           )}
         >
-          <dt className="eyebrow">{s.label}</dt>
-          <dd className="text-display flex min-h-[1em] items-end text-[clamp(2.75rem,6vw,5rem)] text-ink">
+          <dt className="eyebrow text-[0.65rem] xs:text-[0.72rem]">{s.label}</dt>
+          <dd className="text-display flex min-h-[1em] items-end text-[clamp(1.75rem,5.5vw,5rem)] text-ink">
             <StatValue stat={s} start={inView} />
           </dd>
         </div>

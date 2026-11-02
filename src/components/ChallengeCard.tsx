@@ -80,7 +80,7 @@ export function ChallengeDetail({
       </p>
 
       <p className={cn('eyebrow', compact ? 'mt-5' : 'mt-8')}>Suggested stack</p>
-      <ul className="mt-3 flex flex-wrap gap-2" aria-label="Suggested technologies">
+      <ul className="mt-3 flex flex-wrap gap-1.5 xs:gap-2" aria-label="Suggested technologies">
         {challenge.technologies.map((t) => (
           <li key={t}>
             <Badge>{t}</Badge>
@@ -94,6 +94,7 @@ export function ChallengeDetail({
           external={registerHref.startsWith('http')}
           variant={compact ? 'secondary' : 'primary'}
           ariaLabel={`Register to build in ${challenge.title}`}
+          className="w-full sm:w-auto"
         >
           Register to build
         </Button>

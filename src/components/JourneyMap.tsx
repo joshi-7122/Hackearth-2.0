@@ -292,7 +292,7 @@ export function JourneyMap() {
   return (
     <div className="lg:grid lg:grid-cols-12 lg:gap-12">
       {/* Mobile / tablet: sticky horizontal map strip */}
-      <div className="sticky top-[calc(var(--nav-h)+0.25rem)] z-20 -mx-4 mb-8 border-y border-line bg-paper/90 px-4 pt-3 pb-2 backdrop-blur-md sm:-mx-6 sm:px-6 lg:hidden">
+      <div className="sticky top-[calc(var(--nav-h)+0.25rem)] z-20 -mx-4 mb-8 border-y border-line bg-paper/95 px-4 pt-3 pb-2.5 backdrop-blur-md sm:-mx-6 sm:px-6 lg:hidden">
         <div className="h-20 sm:h-24">
           <Road orientation="horizontal" progress={progress} active={active} onPick={goTo} />
         </div>
@@ -301,6 +301,27 @@ export function JourneyMap() {
             {String(active + 1).padStart(2, '0')} · {schedule[active]!.short ?? schedule[active]!.phase}
           </span>
           <span className="font-mono text-ink-muted">{schedule[active]!.date}</span>
+        </div>
+        <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          {schedule.map((s, i) => (
+            <button
+              key={s.phase}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-current={i === active ? 'step' : undefined}
+              className={cn(
+                'inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition-colors duration-300',
+                i === active
+                  ? 'border-brand bg-brand text-on-brand'
+                  : progress >= i
+                    ? 'border-brand/40 bg-brand/10 text-brand-deep'
+                    : 'border-line-strong text-ink-muted',
+              )}
+            >
+              <span className="font-mono text-[0.65rem]">{String(i + 1).padStart(2, '0')}</span>
+              <span>{s.short ?? s.phase}</span>
+            </button>
+          ))}
         </div>
       </div>
 
@@ -334,12 +355,12 @@ export function JourneyMap() {
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              className="flex min-h-[55vh] items-center py-6 lg:min-h-[78vh]"
+              className="flex min-h-[auto] sm:min-h-[50vh] items-center py-4 sm:py-6 lg:min-h-[78vh]"
             >
               <article
                 aria-current={isActive ? 'step' : undefined}
                 className={cn(
-                  'w-full rounded-(--radius-panel) border p-6 transition-[opacity,transform,border-color,box-shadow] duration-500 ease-(--ease-out-expo) md:p-8',
+                  'w-full rounded-(--radius-panel) border p-5 xs:p-6 transition-[opacity,transform,border-color,box-shadow] duration-500 ease-(--ease-out-expo) md:p-8',
                   isActive
                     ? 'border-brand/50 bg-card opacity-100 shadow-[0_30px_60px_-30px_rgb(199_58_123/0.45)]'
                     : 'border-line bg-card/60 opacity-55 lg:scale-[0.97]',
@@ -364,7 +385,7 @@ export function JourneyMap() {
                     </>
                   )}
                 </p>
-                <h3 className="mt-4 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-tight text-indigo">{item.phase}</h3>
+                <h3 className="mt-3 xs:mt-4 font-display text-[clamp(1.5rem,4.5vw,2.5rem)] leading-tight text-indigo">{item.phase}</h3>
                 <p className="mt-3 max-w-xl leading-relaxed text-ink-muted">{item.description}</p>
                 {item.points && (
                   <ul className="mt-4 space-y-2 text-[0.97rem] text-ink-muted">

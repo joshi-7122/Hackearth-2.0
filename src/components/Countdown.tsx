@@ -33,7 +33,7 @@ export function Countdown() {
     state.phase === 'before' ? 'Hacking begins in' : state.phase === 'live' ? 'Live now · ends in' : 'That’s a wrap';
 
   return (
-    <div className="relative isolate overflow-hidden rounded-(--radius-panel) border border-line bg-card p-6 shadow-(--shadow-card) md:p-7">
+    <div className="relative isolate overflow-hidden rounded-(--radius-panel) border border-line bg-card p-4 xs:p-6 shadow-(--shadow-card) md:p-7">
       <BinaryField
         className="absolute inset-y-0 right-0 -z-10 w-2/3 [mask-image:linear-gradient(to_left,#000,transparent)]"
         fontSize={12}
@@ -51,15 +51,15 @@ export function Countdown() {
           <p className="sr-only">
             The offline final starts on 29 November 2026 at 12:00 PM IST and runs for 24 hours.
           </p>
-          <ol aria-hidden="true" className="mt-5 grid grid-cols-4 gap-2 sm:gap-3">
+          <ol aria-hidden="true" className="mt-5 grid grid-cols-4 gap-1.5 xs:gap-2 sm:gap-3">
             {state.parts.map((p) => (
-              <li key={p.l} className="rounded-2xl border border-line bg-paper/80 px-1 py-3 text-center backdrop-blur-sm">
-                <span className="block overflow-hidden font-display text-[clamp(1.9rem,3.6vw,2.75rem)] leading-none text-indigo tabular-nums">
+              <li key={p.l} className="rounded-xl xs:rounded-2xl border border-line bg-paper/80 px-1 py-2.5 xs:py-3 text-center backdrop-blur-sm">
+                <span className="block overflow-hidden font-display text-[clamp(1.4rem,4.2vw,2.75rem)] leading-none text-indigo tabular-nums">
                   <span key={p.v} className="block animate-[tick-in_420ms_var(--ease-out-expo)] motion-reduce:animate-none">
                     {String(p.v).padStart(2, '0')}
                   </span>
                 </span>
-                <span className="mt-2 block font-mono text-[0.58rem] tracking-[0.14em] text-ink-muted uppercase">{p.l}</span>
+                <span className="mt-1.5 xs:mt-2 block font-mono text-[0.55rem] xs:text-[0.58rem] tracking-[0.1em] xs:tracking-[0.14em] text-ink-muted uppercase">{p.l}</span>
               </li>
             ))}
           </ol>

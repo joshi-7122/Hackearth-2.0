@@ -55,7 +55,7 @@ export function Prizes() {
                 as="li"
                 key={a.title}
                 i={i % 3}
-                className="group flex gap-4 border-r border-b border-line p-6 transition-colors duration-500 hover:bg-indigo/[0.025] md:p-7"
+                className="group flex gap-3.5 xs:gap-4 border-r border-b border-line p-4 xs:p-6 transition-colors duration-500 hover:bg-indigo/[0.025] md:p-7"
               >
                 <span className="grid size-10 shrink-0 place-items-center rounded-full border border-line-strong text-ink-muted transition-colors duration-500 group-hover:border-brand/50 group-hover:text-brand">
                   <Icon name={a.icon} size={18} />

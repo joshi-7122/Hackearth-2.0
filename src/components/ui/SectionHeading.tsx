@@ -44,7 +44,7 @@ export function SectionHeading({
         id={id}
         className={cn(
           'text-display text-ink',
-          size === 'lg' ? 'text-[clamp(2.4rem,6.2vw,5rem)]' : 'text-[clamp(2.4rem,4.6vw,4rem)]',
+          size === 'lg' ? 'text-[clamp(1.85rem,5.8vw,5rem)]' : 'text-[clamp(1.75rem,4.4vw,4rem)]',
         )}
       >
         {lines.map((line, i) => (

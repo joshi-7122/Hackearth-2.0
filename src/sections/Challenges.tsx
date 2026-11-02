@@ -147,7 +147,7 @@ export function Challenges() {
                   </span>
                 }
               >
-                <div className="pl-9">
+                <div className="pl-4 xs:pl-6 sm:pl-9">
                   <ChallengeDetail challenge={c} index={i} total={challenges.length} compact />
                 </div>
               </Disclosure>

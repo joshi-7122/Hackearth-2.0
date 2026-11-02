@@ -88,7 +88,7 @@
 }
 
 :root {
-  --nav-h: 6rem;
+  --nav-h: 5.25rem;
   --dur-fast: 180ms;
   --dur-base: 420ms;
   --dur-slow: 900ms;
@@ -102,6 +102,12 @@
   --outline-rgb: 57 47 115;
   --grid-rgb: 57 47 115;
   color-scheme: light;
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --nav-h: 6rem;
+  }
 }
 
 /* ── Dark theme ──────────────────────────────────────────────
@@ -273,7 +279,10 @@ body::before {
 }
 
 @utility section-y {
-  padding-block: 5.5rem;
+  padding-block: 3.75rem;
+  @media (width >= 40rem) {
+    padding-block: 5.5rem;
+  }
   @media (width >= 48rem) {
     padding-block: 7.5rem;
   }

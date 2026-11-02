@@ -16,7 +16,7 @@ export function PrizeCard({ prize }: { prize: Prize }) {
     <article
       onPointerMove={onMove}
       className={cn(
-        'spotlight group relative flex flex-col overflow-hidden rounded-(--radius-panel) border p-7 md:p-8',
+        'spotlight group relative flex flex-col overflow-hidden rounded-(--radius-panel) border p-5 xs:p-7 md:p-8',
         first
           ? 'border-brand/40 bg-gradient-to-b from-brand/[0.09] via-card to-card shadow-[0_0_0_1px_rgb(199_58_123/0.15),0_40px_120px_-40px_rgb(199_58_123/0.45)] lg:min-h-[26rem]'
           : 'border-line bg-card lg:min-h-[21rem]',
@@ -46,15 +46,15 @@ export function PrizeCard({ prize }: { prize: Prize }) {
         </span>
       </div>
 
-      <h3 className="mt-auto pt-16 font-serif text-lg font-semibold text-ink-muted">{prize.title}</h3>
+      <h3 className="mt-auto pt-10 xs:pt-16 font-serif text-base xs:text-lg font-semibold text-ink-muted">{prize.title}</h3>
       <p
         className={cn(
           'text-display mt-2 text-ink [&_.ph]:align-middle [&_.ph]:text-[0.5em]',
           prize.amount.startsWith('₹')
             ? cn('whitespace-nowrap', first ? 'text-[clamp(2.6rem,5vw,4.25rem)]' : 'text-[clamp(2.2rem,4vw,3.25rem)]')
             : first
-              ? 'text-[clamp(2rem,3.2vw,2.75rem)] leading-[1.05]'
-              : 'text-[clamp(1.75rem,2.6vw,2.25rem)] leading-[1.05]',
+              ? 'text-[clamp(1.75rem,5vw,2.75rem)] leading-[1.05]'
+              : 'text-[clamp(1.5rem,4.5vw,2.25rem)] leading-[1.05]',
         )}
       >
         <Txt>{prize.amount}</Txt>

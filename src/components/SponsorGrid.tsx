@@ -33,7 +33,7 @@ function PartnerTile({ sponsor }: { sponsor: Sponsor }) {
     <PlaceholderMark name={sponsor.name} />
   );
   const cls =
-    'group grid h-36 place-items-center rounded-(--radius-card) border border-line bg-card px-4 shadow-(--shadow-card) transition-[border-color,transform] duration-500 ease-(--ease-out-expo) hover:-translate-y-1 hover:border-brand/40';
+    'group grid h-28 xs:h-36 place-items-center rounded-(--radius-card) border border-line bg-card p-3 xs:px-4 shadow-(--shadow-card) transition-[border-color,transform] duration-500 ease-(--ease-out-expo) hover:-translate-y-1 hover:border-brand/40';
   return href ? (
     <a href={href} target="_blank" rel="noopener noreferrer" className={cls} aria-label={`${sponsor.name} (opens in new tab)`}>
       {content}

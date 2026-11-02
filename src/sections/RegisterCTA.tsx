@@ -40,13 +40,13 @@ export function RegisterCTA() {
       <Swoosh className="absolute -top-10 -right-10 -z-10 w-80 opacity-80" />
       <Swoosh flip className="absolute -bottom-16 -left-10 -z-10 w-72 rotate-180 opacity-80" />
 
-      <div className="container-x relative z-10 flex flex-col items-center pt-40 pb-28 text-center [text-rendering:geometricPrecision] md:pt-52 md:pb-36">
+      <div className="container-x relative z-10 flex flex-col items-center pt-28 xs:pt-40 pb-20 xs:pb-28 text-center [text-rendering:geometricPrecision] md:pt-52 md:pb-36">
         <Reveal as="p" className="eyebrow inline-flex items-center gap-3 text-ink-muted">
           <Leaf className="hidden w-5 sm:block" />
           {info.strapline}
         </Reveal>
 
-        <h2 ref={headRef} id="register-title" className="text-display mt-8 text-[clamp(2.8rem,8vw,7rem)] leading-[0.98]">
+        <h2 ref={headRef} id="register-title" className="text-display mt-6 xs:mt-8 text-[clamp(1.95rem,6.8vw,7rem)] leading-[1.02]">
           <span className="line-mask" style={{ ['--i' as string]: 0 }}>
             <span>
               <span className="glitch-x text-white motion-reduce:!animate-none" data-text="Ready to reimagine">
@@ -63,19 +63,19 @@ export function RegisterCTA() {
           </span>
         </h2>
 
-        <Reveal as="p" i={2} className="mt-8 font-display text-[clamp(1.3rem,2.4vw,1.9rem)] text-white">
+        <Reveal as="p" i={2} className="mt-6 xs:mt-8 font-display text-[clamp(1.15rem,3.2vw,1.9rem)] text-white">
           Bring your team. Bring your ideas. <span className="text-brand">Build for impact.</span>
         </Reveal>
-        <Reveal as="p" i={3} className="mt-4 max-w-xl text-lg font-medium text-ink-muted">
+        <Reveal as="p" i={3} className="mt-3 xs:mt-4 max-w-xl text-base xs:text-lg font-medium text-ink-muted">
           {reg.state === 'closed'
             ? 'Registrations for WIE HackEarth 2.0 have closed. Shortlisted teams will hear from the organizers directly.'
             : `Register on ${registration.platform} and take your idea from concept to creation. Registration closes ${registration.deadline}.`}
         </Reveal>
 
-        <Reveal i={4} className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
+        <Reveal i={4} className="mt-8 xs:mt-10 flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:items-center">
           {reg.state !== 'closed' &&
             (href ? (
-              <Button href={href} external size="lg">
+              <Button href={href} external size="lg" className="w-full sm:w-auto">
                 Register on Unstop
               </Button>
             ) : (
@@ -90,7 +90,7 @@ export function RegisterCTA() {
             href={info.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-13 items-center gap-2.5 rounded-full border border-line-strong bg-white/5 px-7 font-semibold text-ink transition-colors hover:border-[#25d366] hover:text-[#7ff0a8]"
+            className="inline-flex h-13 w-full sm:w-auto items-center justify-center gap-2.5 rounded-full border border-line-strong bg-white/5 px-6 font-semibold text-ink transition-colors hover:border-[#25d366] hover:text-[#7ff0a8]"
           >
             <Icon name="whatsapp" size={18} />
             Join the WhatsApp group

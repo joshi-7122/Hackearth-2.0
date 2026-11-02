@@ -65,7 +65,11 @@ export function People() {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => setRole(t.role)}
                   className={cn(
-                    'relative z-10 h-10 rounded-full px-3 text-xs sm:px-5 sm:text-sm font-medium transition-colors duration-300 text-center whitespace-nowrap',
+
+
+
+                    'relative z-10 h-9 xs:h-10 rounded-full px-2 xs:px-5 text-xs xs:text-sm font-medium transition-colors duration-300 text-center whitespace-nowrap',
+
                     selected ? 'text-on-brand' : 'text-ink-muted hover:text-ink',
                   )}
                 >
@@ -80,7 +84,7 @@ export function People() {
           id="people-panel"
           role="tabpanel"
           aria-labelledby={`role-tab-${role}`}
-          className="mt-14 grid grid-cols-1 gap-x-5 gap-y-12 xs:grid-cols-2 lg:grid-cols-4"
+          className="mt-10 sm:mt-14 grid grid-cols-1 gap-x-5 gap-y-10 xs:grid-cols-2 lg:grid-cols-4"
         >
           {list.map((p, i) => (
             <Reveal key={p.name + p.role} i={i}>

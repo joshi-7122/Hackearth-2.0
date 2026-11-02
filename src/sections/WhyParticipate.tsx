@@ -28,12 +28,12 @@ export function WhyParticipate() {
         <ol className="lg:col-span-8">
           {reasons.map((r, i) => (
             <Reveal as="li" key={r.word} i={i} className="border-b border-line first:border-t">
-              <div className="group grid grid-cols-[2.5rem_1fr] items-center gap-x-4 gap-y-4 py-7 md:gap-x-6 md:py-8 xl:grid-cols-[3rem_minmax(0,1fr)_17rem] xl:gap-x-8">
+              <div className="group grid grid-cols-[2rem_1fr] xs:grid-cols-[2.5rem_1fr] items-center gap-x-3 xs:gap-x-4 gap-y-3 xs:gap-y-4 py-6 xs:py-7 md:gap-x-6 md:py-8 xl:grid-cols-[3rem_minmax(0,1fr)_17rem] xl:gap-x-8">
                 <span className="font-mono text-xs tracking-widest text-ink-subtle transition-colors duration-500 group-hover:text-brand">
                   0{i + 1}
                 </span>
 
-                <h3 className="relative min-w-0 text-display text-[clamp(2.4rem,7.5vw,4.75rem)] leading-[0.9] uppercase">
+                <h3 className="relative min-w-0 text-display text-[clamp(2.1rem,7.5vw,4.75rem)] leading-[0.9] uppercase">
                   <span className="text-outline block transition-opacity duration-500 group-hover:opacity-0 max-md:opacity-0">
                     {r.word}
                   </span>
@@ -45,7 +45,7 @@ export function WhyParticipate() {
                   </span>
                 </h3>
 
-                <div className="col-start-2 flex items-start gap-4 xl:col-start-3 md:translate-x-2 md:transition-transform md:duration-500 md:ease-(--ease-out-expo) md:group-hover:translate-x-0">
+                <div className="col-span-2 xs:col-span-1 xs:col-start-2 flex items-start gap-3 xs:gap-4 xl:col-start-3 md:translate-x-2 md:transition-transform md:duration-500 md:ease-(--ease-out-expo) md:group-hover:translate-x-0">
                   <span className="grid size-10 shrink-0 place-items-center rounded-full border border-line-strong text-brand transition-colors duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-on-brand">
                     <Icon name={r.icon} size={18} />
                   </span>
