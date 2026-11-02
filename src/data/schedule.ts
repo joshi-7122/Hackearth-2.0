@@ -1,0 +1,77 @@
+import type { JourneyStep, ScheduleItem } from '@/types';
+
+/** Official rounds and dates (IST). */
+export const schedule: ScheduleItem[] = [
+  {
+    round: 'Round 1',
+    short: 'Register',
+    phase: 'Registration & PPT submission',
+    date: '2 Nov – 16 Nov 2026',
+    time: '12:00 PM → 11:59 PM',
+    description: 'Register your team on Unstop and submit your idea presentation for screening.',
+    points: [
+      'Use the official PPT template — it will be published on the Unstop opportunity page',
+      'Keep the submission clear, complete and structured as per the template',
+    ],
+  },
+  {
+    short: 'Screening',
+    phase: 'PPT screening',
+    date: '10 Nov – 16 Nov 2026',
+    description: 'The organizing team reviews every submission.',
+    points: ['Shortlisting is based on the quality and potential of the idea — innovation, feasibility, relevance and impact'],
+  },
+  {
+    short: 'Results',
+    phase: 'Results announced',
+    date: '16 Nov – 18 Nov 2026',
+    description: 'Shortlisted teams are announced and receive instructions for the final round.',
+  },
+  {
+    round: 'Round 2',
+    short: 'Final',
+    phase: 'Final offline hackathon',
+    date: '29 – 30 Nov 2026',
+    time: '24 hrs · 12:00 PM onwards',
+    description: 'Shortlisted teams build their solutions on campus at Galgotias University, Greater Noida.',
+    points: ['Further details are shared directly with shortlisted teams'],
+  },
+];
+
+export const journey: JourneyStep[] = [
+  {
+    title: 'Form your team',
+    description: 'Two to four members — and every team includes at least one female member.',
+    icon: 'users',
+  },
+  {
+    title: 'Register on Unstop',
+    description: 'Sign up during the registration window, 2–16 November 2026.',
+    icon: 'pen',
+  },
+  {
+    title: 'Join the WhatsApp group',
+    description: 'Mandatory — all updates and announcements are shared there.',
+    icon: 'whatsapp',
+  },
+  {
+    title: 'Submit your PPT',
+    description: 'Present your idea using the official template on the Unstop page.',
+    icon: 'upload',
+  },
+  {
+    title: 'Get shortlisted',
+    description: 'Ideas are screened for innovation, feasibility, relevance and impact.',
+    icon: 'check',
+  },
+  {
+    title: 'Build at the final',
+    description: 'A 24-hour build at the offline final — 29 Nov, 12:00 PM onwards.',
+    icon: 'code',
+  },
+  {
+    title: 'Win',
+    description: 'Compete for a prize pool of up to ₹1,00,000 — and goodies for the Top 20.',
+    icon: 'trophy',
+  },
+];

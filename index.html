@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>WIE HackEarth 2.0 · 2026 — Build. Break. Rebuild.</title>
+    <meta
+      name="description"
+      content="WIE HackEarth 2.0 (2026): a pan-India hackathon by IEEE WIE, IEEE Galgotias University Student Branch and IEEE CIS. Prize pool up to ₹1,00,000. Register on Unstop by 16 Nov 2026; offline final on 29–30 Nov at Galgotias University, Greater Noida."
+    />
+    <meta name="theme-color" content="#fcf7eb" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Apply the saved / system theme before first paint (no flash) -->
+    <script>
+      (function () {
+        var t = 'light';
+        try {
+          t = localStorage.getItem('he2-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        } catch (e) {}
+        document.documentElement.dataset.theme = t;
+        if (t === 'dark') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#140a26');
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph — replace og:url with the live domain before launch -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="WIE HackEarth 2.0" />
+    <meta property="og:title" content="WIE HackEarth 2.0 · 2026 — Build. Break. Rebuild." />
+    <meta
+      property="og:description"
+      content="Pan-India hackathon · Prize pool up to ₹1,00,000 · Register by 16 Nov · Offline final 29–30 Nov 2026 at Galgotias University."
+    />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="WIE HackEarth 2.0 · 2026 — Build. Break. Rebuild." />
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WIE HackEarth 2.0 · 2026 — Build. Break. Rebuild." />
+    <meta
+      name="twitter:description"
+      content="Pan-India hackathon · Prize pool up to ₹1,00,000 · Register by 16 Nov · Offline final 29–30 Nov 2026 at Galgotias University."
+    />
+    <meta name="twitter:image" content="/og.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "WIE HackEarth 2.0 (2026)",
+        "description": "A pan-India hackathon for innovative, sustainable & human-centred solutions.",
+        "startDate": "2026-11-29",
+        "endDate": "2026-11-30",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Galgotias University",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Plot No. 2, Yamuna Expressway, Opposite Buddha International Circuit, Sector 17A",
+            "addressLocality": "Greater Noida",
+            "addressRegion": "Uttar Pradesh",
+            "postalCode": "203201",
+            "addressCountry": "IN"
+          }
+        },
+        "organizer": [
+          { "@type": "Organization", "name": "IEEE WIE Affinity Group, IEEE Galgotias University Student Branch" },
+          { "@type": "Organization", "name": "IEEE Computational Intelligence Society" },
+          { "@type": "Organization", "name": "Medhasphere, Departmental Club of AI/ML" }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p style="padding:2rem;font-family:Georgia,serif;color:#2a2357;background:#fcf7eb">
+        WIE HackEarth 2.0 · 2026 — Build. Break. Rebuild. Please enable JavaScript to view the full site.
+      </p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
