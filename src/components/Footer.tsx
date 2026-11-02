@@ -50,6 +50,21 @@ export function Footer() {
             </p>
             <p className="mt-3 max-w-sm leading-relaxed text-ink-muted">{info.theme}</p>
             <SocialLinks links={socialLinks} className="mt-6" />
+
+            <div className="mt-6 max-w-xs border-t border-line/40 pt-5">
+              <p className="font-mono text-xs tracking-wider text-ink-subtle uppercase">
+                Registration platform partner
+              </p>
+              <a
+                href={info.registration.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-blush"
+              >
+                <span>{info.registration.platform}</span>
+                <Icon name="arrowUpRight" size={14} className="text-blush" />
+              </a>
+            </div>
           </div>
 
           <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-[0.8fr_1.1fr_1.5fr] md:col-span-7">

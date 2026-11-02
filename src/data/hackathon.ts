@@ -119,9 +119,8 @@ export const reasons: Reason[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { platform: 'linkedin', url: '[LINKEDIN URL]', label: 'LinkedIn' },
-  { platform: 'instagram', url: '[INSTAGRAM URL]', label: 'Instagram' },
-  { platform: 'x', url: '[X URL]', label: 'X (Twitter)' },
+  { platform: 'linkedin', url: 'https://www.linkedin.com/company/ieee-gu/home/', label: 'LinkedIn' },
+  { platform: 'instagram', url: 'https://www.instagram.com/ieeegusb?utm_source=ig_web_button_share_sheet&vrfl=ZDNlZDc0MzIxNw==', label: 'Instagram' },
   { platform: 'whatsapp', url: 'https://chat.whatsapp.com/CuMbyBmrdeXDpoHyE25dLj', label: 'WhatsApp group' },
 ];
 

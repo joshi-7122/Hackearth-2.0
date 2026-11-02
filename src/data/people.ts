@@ -34,10 +34,16 @@ export const people: Person[] = [
   person('speaker', ['AI agents'], 2),
   person('speaker', ['Careers', 'Hiring'], 3),
   person('speaker', ['Founders'], 4),
+
+  person('organizer', ['Lead', 'Operations'], 1),
+  person('organizer', ['Tech', 'Platform'], 2),
+  person('organizer', ['Design', 'Media'], 3),
+  person('organizer', ['Sponsorship', 'Outreach'], 4),
 ];
 
 export const roleTabs: { role: PersonRole; label: string }[] = [
   { role: 'judge', label: 'Judges' },
   { role: 'mentor', label: 'Mentors' },
   { role: 'speaker', label: 'Speakers' },
+  { role: 'organizer', label: 'Organizing Team' },
 ];

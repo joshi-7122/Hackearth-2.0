@@ -28,7 +28,7 @@ export function People() {
           <SectionHeading
             id="people-title"
             index="08"
-            eyebrow="Judges & mentors"
+            eyebrow="Judges, mentors & team"
             lines={['The people', <span className="text-brand">in your corner.</span>]}
           />
 
@@ -36,12 +36,18 @@ export function People() {
             role="tablist"
             aria-label="People by role"
             onKeyDown={onKeyDown}
-            className="relative inline-grid w-full grid-cols-3 rounded-full border border-line-strong bg-card p-1 sm:w-auto"
+            className="relative inline-grid w-full rounded-full border border-line-strong bg-card p-1 sm:w-auto"
+            style={{
+              gridTemplateColumns: `repeat(${roleTabs.length}, minmax(0, 1fr))`,
+            }}
           >
             <span
               aria-hidden="true"
-              className="absolute inset-y-1 left-1 w-[calc((100%-0.5rem)/3)] rounded-full bg-brand transition-transform duration-500 ease-(--ease-out-expo)"
-              style={{ transform: `translateX(${activeIndex * 100}%)` }}
+              className="absolute inset-y-1 left-1 rounded-full bg-brand transition-transform duration-500 ease-(--ease-out-expo)"
+              style={{
+                width: `calc((100% - 0.5rem) / ${roleTabs.length})`,
+                transform: `translateX(${activeIndex * 100}%)`,
+              }}
             />
             {roleTabs.map((t, i) => {
               const selected = t.role === role;
@@ -59,7 +65,7 @@ export function People() {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => setRole(t.role)}
                   className={cn(
-                    'relative z-10 h-10 rounded-full px-5 text-sm font-medium transition-colors duration-300',
+                    'relative z-10 h-10 rounded-full px-3 text-xs sm:px-5 sm:text-sm font-medium transition-colors duration-300 text-center whitespace-nowrap',
                     selected ? 'text-on-brand' : 'text-ink-muted hover:text-ink',
                   )}
                 >

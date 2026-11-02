@@ -157,7 +157,7 @@ export interface SocialLink {
   label: string;
 }
 
-export type PersonRole = 'judge' | 'mentor' | 'speaker';
+export type PersonRole = 'judge' | 'mentor' | 'speaker' | 'organizer';
 
 export interface Person {
   name: Text;
