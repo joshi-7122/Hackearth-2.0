@@ -32,7 +32,7 @@ export const schedule: ScheduleItem[] = [
     short: 'Final',
     phase: 'Final offline hackathon',
     date: '29 – 30 Nov 2026',
-    time: '24 hrs · 12:00 PM onwards',
+    time: '28 hrs · 12:00 PM onwards',
     description: 'Shortlisted teams build their solutions on campus at Galgotias University, Greater Noida.',
     points: ['Further details are shared directly with shortlisted teams'],
   },
@@ -66,7 +66,7 @@ export const journey: JourneyStep[] = [
   },
   {
     title: 'Build at the final',
-    description: 'A 24-hour build at the offline final — 29 Nov, 12:00 PM onwards.',
+    description: 'A 28-hour build at the offline final — 29 Nov, 12:00 PM onwards.',
     icon: 'code',
   },
   {

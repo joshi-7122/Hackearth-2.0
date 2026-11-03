@@ -16,7 +16,7 @@ export function Faq() {
             <SectionHeading
               id="faq-title"
               size="md"
-              index="11"
+              index="12"
               eyebrow="FAQ"
               lines={['Questions,', <span className="text-brand">answered.</span>]}
             />

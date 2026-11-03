@@ -53,7 +53,8 @@ export function Navbar() {
   const measure = useCallback(() => {
     const el = target ? linkRefs.current[target] : null;
     const list = listRef.current;
-    if (!el || !list) {
+    // offsetWidth is 0 for an xlOnly link hidden at this breakpoint
+    if (!el || !list || !el.offsetWidth) {
       setPill((p) => ({ ...p, visible: false }));
       return;
     }
@@ -142,7 +143,7 @@ export function Navbar() {
             {navItems.map((item) => {
               const isActive = active === item.id;
               return (
-                <li key={item.id} className="relative">
+                <li key={item.id} className={cn('relative', item.xlOnly && 'hidden xl:block')}>
                   <a
                     ref={(el) => {
                       linkRefs.current[item.id] = el;
@@ -153,7 +154,7 @@ export function Navbar() {
                     onFocus={() => setHovered(item.id)}
                     onBlur={() => setHovered(null)}
                     className={cn(
-                      'relative block rounded-full px-2.5 py-2 text-[0.9rem] whitespace-nowrap transition-colors duration-300 xl:px-4 xl:text-[0.95rem]',
+                      'relative block rounded-full px-2.5 py-2 text-[0.9rem] whitespace-nowrap transition-colors duration-300 xl:px-3.5 xl:text-[0.95rem]',
                       isActive || hovered === item.id ? 'text-brand-deep' : 'text-ink-muted',
                     )}
                   >

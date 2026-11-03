@@ -49,7 +49,7 @@ export function Countdown() {
       ) : (
         <>
           <p className="sr-only">
-            The offline final starts on 29 November 2026 at 12:00 PM IST and runs for 24 hours.
+            The offline final starts on 29 November 2026 at 12:00 PM IST and runs for 28 hours.
           </p>
           <ol aria-hidden="true" className="mt-5 grid grid-cols-4 gap-1.5 xs:gap-2 sm:gap-3">
             {state.parts.map((p) => (
@@ -67,7 +67,7 @@ export function Countdown() {
       )}
 
       <p className="mt-5 text-sm text-ink-muted">
-        <span className="font-semibold text-indigo">29 Nov 2026, 12:00 PM IST</span> · 24-hour offline final at{' '}
+        <span className="font-semibold text-indigo">29 Nov 2026, 12:00 PM IST</span> · 28-hour offline final at{' '}
         {hackathonInfo.venueShort}
       </p>
     </div>

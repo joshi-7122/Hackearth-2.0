@@ -51,4 +51,14 @@ export const faqs: Faq[] = [
     answer:
       'Shortlisted teams receive instructions for the final offline hackathon at Galgotias University, Greater Noida. Further details about the final round are communicated directly to them.',
   },
+  {
+    question: 'Is there a participation fee?',
+    answer:
+      'Only for shortlisted teams. After the PPT evaluation round, each shortlisted team pays ₹400 per team through a Google Form shared in the official WhatsApp group.',
+  },
+  {
+    question: 'Is accommodation provided?',
+    answer:
+      'Yes — teams coming from outside Delhi will be given accommodation at Gautam Buddha University (GBU). The stay is paid for by the team and may cost up to ₹1,500. Galgotias University provides transport to pick you up from GBU and drop you back.',
+  },
 ];

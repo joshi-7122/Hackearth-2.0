@@ -17,6 +17,7 @@ import { RegisterCTA } from '@/sections/RegisterCTA';
 import { Rules } from '@/sections/Rules';
 import { Schedule } from '@/sections/Schedule';
 import { Sponsors } from '@/sections/Sponsors';
+import { Travel } from '@/sections/Travel';
 import { WhyParticipate } from '@/sections/WhyParticipate';
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
         <Experience />
         <Schedule />
         <Rules />
+        <Travel />
         <Prizes />
         <People />
         <Legacy />

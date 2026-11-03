@@ -58,7 +58,7 @@ export function Legacy() {
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
             id="legacy-title"
-            index="09"
+            index="10"
             eyebrow="Past events"
             lines={['We’ve done', <span className="text-brand">this before.</span>]}
           />

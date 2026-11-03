@@ -12,6 +12,8 @@ export type Accent = 'brand' | 'violet' | 'leaf' | 'indigo';
 export interface NavItem {
   id: string;
   label: string;
+  /** Desktop bar shows it only from xl up (still in the mobile menu) — keeps lg from overflowing. */
+  xlOnly?: boolean;
 }
 
 export interface Stat {

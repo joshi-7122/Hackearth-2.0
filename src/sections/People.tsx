@@ -27,7 +27,7 @@ export function People() {
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
           <SectionHeading
             id="people-title"
-            index="08"
+            index="09"
             eyebrow="Judges, mentors & team"
             lines={['The people', <span className="text-brand">in your corner.</span>]}
           />

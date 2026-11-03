@@ -21,7 +21,7 @@ export function Prizes() {
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
             id="prizes-title"
-            index="07"
+            index="08"
             eyebrow="Prizes"
             lines={[
               <span>

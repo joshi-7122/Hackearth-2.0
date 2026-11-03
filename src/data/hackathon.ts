@@ -21,10 +21,10 @@ export const hackathonInfo: HackathonInfo = {
   dateShort: '29–30 Nov',
   /** Local start date (IST) — drives the countdown. */
   startDate: '2026-11-29T12:00:00+05:30',
-  /** 24-hour hackathon: ends at noon on 30 Nov (IST). */
-  endDate: '2026-11-30T12:00:00+05:30',
+  /** 28-hour hackathon: ends at 4:00 PM on 30 Nov (IST). */
+  endDate: '2026-11-30T16:00:00+05:30',
   startTime: '12:00 PM onwards',
-  durationLabel: '24 hrs',
+  durationLabel: '28 hrs',
   mode: 'Pan-India · Offline final',
   venue: 'Galgotias University, Greater Noida',
   venueShort: 'Galgotias University',
@@ -67,8 +67,9 @@ export const navItems: NavItem[] = [
   { id: 'about', label: 'About' },
   { id: 'challenges', label: 'Tracks' },
   { id: 'timeline', label: 'Timeline' },
+  { id: 'travel', label: 'Logistics' },
   { id: 'prizes', label: 'Prizes' },
-  { id: 'legacy', label: 'Past events' },
+  { id: 'legacy', label: 'Past events', xlOnly: true },
   { id: 'sponsors', label: 'Partners' },
   { id: 'faq', label: 'FAQ' },
 ];
@@ -76,7 +77,7 @@ export const navItems: NavItem[] = [
 /** At-a-glance facts shown under the About section. */
 export const stats: Stat[] = [
   { value: '29–30 Nov', label: 'Date' },
-  { value: 24, suffix: 'hrs', label: 'Hackathon' },
+  { value: 28, suffix: 'hrs', label: 'Hackathon' },
   { value: '12:00 PM', label: 'Onwards' },
   { value: 'Pan‑India', label: 'Reach for 2026' },
 ];

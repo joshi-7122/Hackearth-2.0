@@ -564,6 +564,15 @@ svg .origin-center {
     transform: translateY(-160%) scale(1.05);
   }
 }
+/* Comet dash on a pathLength=100 route: start of the path → end */
+@keyframes shuttle {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -88;
+  }
+}
 @keyframes btn-ticker {
   to {
     transform: translate3d(-50%, 0, 0);

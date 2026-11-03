@@ -92,6 +92,7 @@ export function Button({
   const el = href ? (
     <a
       href={href}
+      onClick={onClick}
       className={cls}
       aria-label={ariaLabel}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
