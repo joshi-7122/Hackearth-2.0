@@ -12,6 +12,7 @@ export const contactGroups: ContactGroup[] = [
       { name: 'Ansh Vashisth', role: 'Chairperson', phone: '+91 70171 23652' },
       { name: 'Kritika Jha', role: 'Vice Chairperson', phone: '+91 82528 67595' },
       { name: 'Atharav Singh', role: 'Treasurer', phone: '+91 78178 93220' },
+      { name: 'Tarun Kushwaha', role: 'Tech Lead', phone: '+91 99173 37603' },
     ],
   },
   {
