@@ -12,8 +12,12 @@ export type Accent = 'brand' | 'violet' | 'leaf' | 'indigo';
 export interface NavItem {
   id: string;
   label: string;
-  /** Desktop bar shows it only from xl up (still in the mobile menu) — keeps lg from overflowing. */
-  xlOnly?: boolean;
+  /**
+   * Desktop bar shows it only from this width up (always in the mobile menu
+   * and footer) — keeps narrower desktops from overflowing.
+   * 'xl' = 80rem, 'wide' = 90rem.
+   */
+  showFrom?: 'xl' | 'wide';
 }
 
 export interface Stat {
@@ -57,7 +61,6 @@ export interface HackathonInfo {
   prizePoolQualifier: string;
   organizer: Text;
   contactEmail: Text;
-  contactPhone: { number: Text; name: Text; role: Text };
   registration: {
     /** Absolute URL to the registration page. Leave as a placeholder until live. */
     url: Text;
@@ -71,6 +74,22 @@ export interface HackathonInfo {
   /** Mandatory community group for updates. */
   whatsappUrl: Text;
   siteUrl: Text;
+}
+
+export interface ContactPerson {
+  name: string;
+  role: string;
+  /** Display format, e.g. "+91 70171 23652". */
+  phone: string;
+}
+
+export interface ContactGroup {
+  name: string;
+  short: string;
+  role: string;
+  logo: string;
+  logoHeight: number;
+  people: ContactPerson[];
 }
 
 export interface Organizer {

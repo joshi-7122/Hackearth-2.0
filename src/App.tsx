@@ -6,6 +6,7 @@ import { Preloader } from '@/components/Preloader';
 import { Marquee } from '@/components/ui/Marquee';
 import { About } from '@/sections/About';
 import { Challenges } from '@/sections/Challenges';
+import { Contact } from '@/sections/Contact';
 import { Experience } from '@/sections/Experience';
 import { Faq } from '@/sections/Faq';
 import { Hero } from '@/sections/Hero';
@@ -47,6 +48,7 @@ export default function App() {
         <Legacy />
         <Sponsors />
         <Faq />
+        <Contact />
         <Marquee />
         <RegisterCTA />
       </main>

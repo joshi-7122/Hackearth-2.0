@@ -4,9 +4,16 @@ import { useActiveSection } from '@/hooks/useActiveSection';
 import { useScrolled } from '@/hooks/useScrolled';
 import { cn } from '@/lib/cn';
 import { resolveHref } from '@/lib/placeholder';
+import type { NavItem } from '@/types';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from './ui/Button';
 import { Icon } from './ui/Icon';
+
+// Literal class names so Tailwind picks them up.
+const showFrom: Record<NonNullable<NavItem['showFrom']>, string> = {
+  xl: 'hidden xl:block',
+  wide: 'hidden min-[90rem]:block',
+};
 
 /** 0 → 1 page scroll progress, rAF-throttled. */
 function usePageProgress(): number {
@@ -53,7 +60,7 @@ export function Navbar() {
   const measure = useCallback(() => {
     const el = target ? linkRefs.current[target] : null;
     const list = listRef.current;
-    // offsetWidth is 0 for an xlOnly link hidden at this breakpoint
+    // offsetWidth is 0 for a showFrom link hidden at this breakpoint
     if (!el || !list || !el.offsetWidth) {
       setPill((p) => ({ ...p, visible: false }));
       return;
@@ -143,7 +150,7 @@ export function Navbar() {
             {navItems.map((item) => {
               const isActive = active === item.id;
               return (
-                <li key={item.id} className={cn('relative', item.xlOnly && 'hidden xl:block')}>
+                <li key={item.id} className={cn('relative', item.showFrom && showFrom[item.showFrom])}>
                   <a
                     ref={(el) => {
                       linkRefs.current[item.id] = el;

@@ -30,12 +30,11 @@ function FooterLink({ label, url }: { label: string; url: string }) {
 export function Footer() {
   const info = hackathonInfo;
   const mail = resolveEmail(info.contactEmail);
-  const tel = `tel:${info.contactPhone.number.replace(/\s/g, '')}`;
   const year = new Date().getFullYear();
   const organizingBodies = organizers.filter((o) => o.role !== 'Affiliation');
 
   return (
-    <footer id="contact" className="theme-plum relative overflow-hidden border-t border-line pt-14 sm:pt-20">
+    <footer className="theme-plum relative overflow-hidden border-t border-line pt-14 sm:pt-20">
       <div className="container-x">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
@@ -103,15 +102,10 @@ export function Footer() {
                   )}
                 </li>
                 <li className="flex gap-2.5">
-                  <Icon name="phone" size={16} className="mt-1 shrink-0 text-blush" />
-                  <span>
-                    <a href={tel} className="transition-colors hover:text-ink">
-                      {info.contactPhone.number}
-                    </a>
-                    <span className="block text-sm text-ink-subtle">
-                      {info.contactPhone.name} · {info.contactPhone.role}
-                    </span>
-                  </span>
+                  <Icon name="users" size={16} className="mt-1 shrink-0 text-blush" />
+                  <a href="#contact" className="text-sm transition-colors hover:text-ink">
+                    Organizing team contacts
+                  </a>
                 </li>
                 <li className="flex gap-2.5">
                   <Icon name="pin" size={16} className="mt-1 shrink-0 text-blush" />

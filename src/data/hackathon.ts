@@ -36,11 +36,6 @@ export const hackathonInfo: HackathonInfo = {
   prizePoolQualifier: 'Up to',
   organizer: 'IEEE WIE Affinity Group · IEEE Galgotias University Student Branch',
   contactEmail: 'ieeegusb@galgotiasuniversity.edu.in',
-  contactPhone: {
-    number: '+91 78178 93220',
-    name: 'Atharav Singh',
-    role: 'Treasurer, IEEE GU SB',
-  },
   registration: {
     url: 'https://unstop.com/p/wie-hackearth-20-galgotias-university-gu-greater-noida-1790097',
     platform: 'Unstop',
@@ -69,9 +64,10 @@ export const navItems: NavItem[] = [
   { id: 'timeline', label: 'Timeline' },
   { id: 'travel', label: 'Logistics' },
   { id: 'prizes', label: 'Prizes' },
-  { id: 'legacy', label: 'Past events', xlOnly: true },
-  { id: 'sponsors', label: 'Partners' },
+  { id: 'legacy', label: 'Past events', showFrom: 'xl' },
+  { id: 'sponsors', label: 'Partners', showFrom: 'wide' },
   { id: 'faq', label: 'FAQ' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 /** At-a-glance facts shown under the About section. */
