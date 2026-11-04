@@ -1,8 +1,8 @@
 /** Stay, travel and fee details for teams attending the offline final. */
 export const logistics = {
   stay: {
-    place: 'Gautam Buddha University',
-    placeShort: 'GBU',
+    place: 'Venue To Be Announced',
+    placeShort: 'Venue TBA',
     eligibility: 'Teams coming from outside Delhi',
     cost: '₹1,500',
     costQualifier: 'Up to',

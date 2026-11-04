@@ -30,6 +30,7 @@ function FooterLink({ label, url }: { label: string; url: string }) {
 export function Footer() {
   const info = hackathonInfo;
   const mail = resolveEmail(info.contactEmail);
+  const mapHref = resolveHref(info.mapUrl);
   const year = new Date().getFullYear();
   const organizingBodies = organizers.filter((o) => o.role !== 'Affiliation');
 
@@ -107,9 +108,36 @@ export function Footer() {
                     Organizing team contacts
                   </a>
                 </li>
-                <li className="flex gap-2.5">
-                  <Icon name="pin" size={16} className="mt-1 shrink-0 text-blush" />
-                  <address className="text-sm leading-relaxed not-italic">{info.address}</address>
+                <li className="flex flex-col gap-2.5">
+                  <div className="flex gap-2.5">
+                    <Icon name="pin" size={16} className="mt-1 shrink-0 text-blush" />
+                    <address className="text-sm leading-relaxed not-italic">{info.address}</address>
+                  </div>
+                  {mapHref && (
+                    <div className="mt-2 overflow-hidden rounded-xl border border-line-strong/60 bg-card/60 shadow-xs">
+                      <div className="relative h-36 w-full">
+                        <iframe
+                          title="Galgotias University Location Map"
+                          src="https://maps.google.com/maps?q=Galgotias%20University,%20Yamuna%20Expressway,%20Greater%20Noida&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                          className="h-full w-full border-0 contrast-[1.05] opacity-90 transition-opacity hover:opacity-100"
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                        />
+                      </div>
+                      <a
+                        href={mapHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between border-t border-line-strong/60 bg-card/80 px-3 py-2 text-xs font-medium text-ink-muted transition-colors hover:bg-card hover:text-blush"
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <Icon name="pin" size={12} className="text-blush" />
+                          <span>View on Google Maps</span>
+                        </span>
+                        <Icon name="arrowUpRight" size={12} className="text-blush transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </a>
+                    </div>
+                  )}
                 </li>
               </ul>
             </div>

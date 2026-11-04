@@ -30,7 +30,7 @@ export const hackathonInfo: HackathonInfo = {
   venueShort: 'Galgotias University',
   address:
     'Plot No. 2, Yamuna Expressway, Opposite Buddha International Circuit, Sector 17A, Greater Noida, Uttar Pradesh 203201',
-  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Galgotias+University+Greater+Noida',
+  mapUrl: 'https://maps.app.goo.gl/ztq2fgaLFDYVKmZf7',
   teamSize: '2–4 members',
   prizePool: '₹1,00,000',
   prizePoolQualifier: 'Up to',

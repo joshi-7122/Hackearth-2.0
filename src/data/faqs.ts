@@ -59,6 +59,6 @@ export const faqs: Faq[] = [
   {
     question: 'Is accommodation provided?',
     answer:
-      'Yes — teams coming from outside Delhi will be given accommodation at Gautam Buddha University (GBU). The stay is paid for by the team and may cost up to ₹1,500. Galgotias University provides transport to pick you up from GBU and drop you back.',
+      'Yes — teams coming from outside Delhi will be provided accommodation at a designated venue (details to be announced soon). The stay is paid for by the team and may cost up to ₹1,500. Galgotias University provides transport to pick you up from the accommodation venue and drop you back.',
   },
 ];

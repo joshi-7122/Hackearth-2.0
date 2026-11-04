@@ -6,13 +6,13 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 
 const ROUTE = 'M40 110C190 10 410 10 560 110';
 
-/** GBU ⇄ Galgotias shuttle: a dashed arc with a comet running back and forth. */
+/** Shuttle: a dashed arc with a comet running back and forth. */
 function RouteLine() {
   const { stay, venue } = logistics;
   return (
     <div className="relative">
       <p className="sr-only">
-        Pick-up and drop shuttle between {stay.place} and {venue.place}.
+        Pick-up and drop shuttle between the accommodation venue and {venue.place}.
       </p>
       <svg viewBox="0 0 600 140" className="block w-full overflow-visible" aria-hidden="true">
         <path d={ROUTE} fill="none" stroke="var(--color-line-strong)" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" />
@@ -97,10 +97,10 @@ export function Travel() {
                   <span className="grid size-10 shrink-0 place-items-center rounded-full bg-leaf/10 text-leaf">
                     <Icon name="bed" size={18} />
                   </span>
-                  Stay at {stay.placeShort}
+                  Stay &amp; Accommodation
                 </h3>
                 <p className="mt-4 leading-relaxed text-ink-muted">
-                  {stay.eligibility} will be given accommodation at {stay.place}.
+                  {stay.eligibility} will be provided accommodation at a designated venue (details to be announced soon).
                 </p>
                 <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-xl border border-line bg-paper/60 px-3.5 py-2.5 text-sm text-ink-muted">
                   <span className="font-serif text-base font-semibold text-brand-deep">
@@ -118,7 +118,7 @@ export function Travel() {
                   Shuttle to the venue
                 </h3>
                 <p className="mt-4 leading-relaxed text-ink-muted">
-                  Transport is arranged by {venue.place}: pick-up from {stay.placeShort} to the venue and drop
+                  Transport is arranged by {venue.place}: pick-up from the accommodation venue to the campus and drop
                   back, so there’s no commute for you to plan.
                 </p>
               </div>
