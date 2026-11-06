@@ -473,6 +473,20 @@ export function JourneyMap() {
                     ))}
                   </ul>
                 )}
+                {item.link && (
+                  <div className="mt-5">
+                    <a
+                      href={item.link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand/50 bg-brand/10 px-4 py-2 text-xs xs:text-sm font-semibold text-brand-deep transition-all hover:bg-brand hover:text-on-brand shadow-xs"
+                    >
+                      <Icon name="download" size={15} />
+                      <span>{item.link.label}</span>
+                      <Icon name="arrowUpRight" size={14} />
+                    </a>
+                  </div>
+                )}
                 {i < n - 1 && schedule[i + 1] && (
                   <button
                     type="button"

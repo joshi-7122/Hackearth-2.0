@@ -49,6 +49,7 @@ const paths = {
   bus: 'M6 17h12a1 1 0 0 0 1-1V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1zm-1-6h14M8 17v2.5m8-2.5v2.5M8.5 14h.01m6.99 0h.01M9 7h6',
   ticket: 'M4 7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4V7zm10-1v2m0 3v2m0 3v2',
   copy: 'M9 9h10v10H9V9zM5 15V5h10',
+  download: 'M12 4v11m0 0 4-4m-4 4-4-4M4 19h16',
 } as const;
 
 const brands = {

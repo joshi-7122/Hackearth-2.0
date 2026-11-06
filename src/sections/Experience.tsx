@@ -36,6 +36,20 @@ function StepCard({ s, i }: { s: (typeof journey)[number]; i: number }) {
         {s.title}
       </h3>
       <p className={cn('mt-2 text-[0.95rem] leading-relaxed', isLast ? 'opacity-85' : 'text-ink-muted')}>{s.description}</p>
+      {s.link && (
+        <a
+          href={s.link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            'mt-3.5 inline-flex items-center gap-1.5 text-xs font-semibold hover:underline',
+            isLast ? 'text-white' : 'text-brand-deep',
+          )}
+        >
+          <span>{s.link.label}</span>
+          <Icon name="arrowUpRight" size={13} />
+        </a>
+      )}
     </article>
   );
 }

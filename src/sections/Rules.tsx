@@ -73,16 +73,28 @@ export function Rules() {
               ))}
             </ul>
           </div>
-          <a
-            href={hackathonInfo.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#0a7d43] px-5 xs:px-6 py-3.5 font-semibold text-white shadow-[0_10px_24px_-12px_rgb(0_122_63/0.7)] transition-colors hover:bg-[#086a39]"
-          >
-            <Icon name="whatsapp" size={18} />
-            Join the WhatsApp group
-            <span className="rounded-full bg-white/20 px-2 py-0.5 text-[0.7rem] tracking-wide uppercase">Mandatory</span>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3 md:flex-col lg:flex-row">
+            <a
+              href={hackathonInfo.pptTemplateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-brand/50 bg-brand/10 px-5 xs:px-6 py-3.5 font-semibold text-brand-deep shadow-xs transition-colors hover:bg-brand hover:text-on-brand"
+            >
+              <Icon name="download" size={17} />
+              Download PPT Template
+              <Icon name="arrowUpRight" size={14} />
+            </a>
+            <a
+              href={hackathonInfo.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#0a7d43] px-5 xs:px-6 py-3.5 font-semibold text-white shadow-[0_10px_24px_-12px_rgb(0_122_63/0.7)] transition-colors hover:bg-[#086a39]"
+            >
+              <Icon name="whatsapp" size={18} />
+              Join the WhatsApp group
+              <span className="rounded-full bg-white/20 px-2 py-0.5 text-[0.7rem] tracking-wide uppercase">Mandatory</span>
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

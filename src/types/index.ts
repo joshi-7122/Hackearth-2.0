@@ -73,6 +73,8 @@ export interface HackathonInfo {
   };
   /** Mandatory community group for updates. */
   whatsappUrl: Text;
+  /** Official Google Drive link for the idea presentation template. */
+  pptTemplateUrl: Text;
   siteUrl: Text;
 }
 
@@ -154,12 +156,14 @@ export interface ScheduleItem {
   time?: Text;
   description: string;
   points?: string[];
+  link?: { label: string; url: string };
 }
 
 export interface JourneyStep {
   title: string;
   description: string;
   icon: IconName;
+  link?: { label: string; url: string };
 }
 
 export type SponsorTier = 'title' | 'gold' | 'silver' | 'community' | 'tech';
@@ -195,4 +199,5 @@ export interface Person {
 export interface Faq {
   question: string;
   answer: Text;
+  link?: { label: string; url: string };
 }

@@ -44,6 +44,7 @@ export const hackathonInfo: HackathonInfo = {
     deadline: '16 November 2026, 11:59 PM',
   },
   whatsappUrl: 'https://chat.whatsapp.com/CuMbyBmrdeXDpoHyE25dLj',
+  pptTemplateUrl: 'https://drive.google.com/file/d/1-98uQD81STJkyee2JYeBX1UJMwK3RQ3N/view?usp=share_link',
   siteUrl: '[SITE URL]',
 };
 

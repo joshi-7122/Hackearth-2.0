@@ -20,9 +20,13 @@ export const schedule: ScheduleItem[] = [
     date: '10 Nov – 13 Nov 2026',
     description: 'Teams submit their idea presentation using the official template on Unstop.',
     points: [
-      'Use the official PPT template — it will be published on the Unstop opportunity page',
+      'Use the official PPT template — download the template directly from Google Drive',
       'Keep the submission clear, complete and structured as per the template',
     ],
+    link: {
+      label: 'Download official PPT template',
+      url: 'https://drive.google.com/file/d/1-98uQD81STJkyee2JYeBX1UJMwK3RQ3N/view?usp=share_link',
+    },
   },
   {
     short: 'Screening',
@@ -68,6 +72,10 @@ export const journey: JourneyStep[] = [
     title: 'Submit your PPT',
     description: 'Present your idea using the official template on the Unstop page.',
     icon: 'upload',
+    link: {
+      label: 'Download PPT template',
+      url: 'https://drive.google.com/file/d/1-98uQD81STJkyee2JYeBX1UJMwK3RQ3N/view?usp=share_link',
+    },
   },
   {
     title: 'Get shortlisted',

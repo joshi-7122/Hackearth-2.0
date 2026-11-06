@@ -24,7 +24,11 @@ export const faqs: Faq[] = [
   {
     question: 'What should we submit?',
     answer:
-      'An idea presentation (PPT) prepared on the official template. The template will be uploaded on the Unstop opportunity page — make sure your submission is clear, complete and structured as per the template.',
+      'An idea presentation (PPT) prepared on the official template. You can download the official template directly from Google Drive and it is also uploaded on the Unstop opportunity page — make sure your submission is clear, complete and structured as per the template.',
+    link: {
+      label: 'Download official PPT template',
+      url: 'https://drive.google.com/file/d/1-98uQD81STJkyee2JYeBX1UJMwK3RQ3N/view?usp=share_link',
+    },
   },
   {
     question: 'How are teams shortlisted?',

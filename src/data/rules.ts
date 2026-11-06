@@ -18,7 +18,7 @@ export const rules = [
 ];
 
 export const importantNotes = [
-  'The official PPT template will be uploaded on the Unstop opportunity page — check it regularly for updates and submission instructions.',
+  'The official PPT template can be downloaded from Google Drive and will also be uploaded on the Unstop opportunity page — make sure to use it for your submission.',
   'Only shortlisted teams proceed to the final offline hackathon at Galgotias University, Greater Noida.',
   'Shortlisted teams will be informed about the final-round participation process.',
 ];
