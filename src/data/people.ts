@@ -20,6 +20,19 @@ const person = (role: PersonRole, focus: string[], n: number): Person => ({
  * ≥ 480px) to show a portrait; otherwise a generated avatar is used.
  */
 export const people: Person[] = [
+  person('faculty', ['Branch Counselor', 'Advisory'], 1),
+  person('faculty', ['Faculty Advisor', 'WIE'], 2),
+  person('faculty', ['Faculty Coordinator', 'Academics'], 3),
+
+  person('organizer', ['Lead', 'Operations'], 1),
+  person('organizer', ['Tech', 'Platform'], 2),
+  person('organizer', ['Design', 'Media'], 3),
+  person('organizer', ['Sponsorship', 'Outreach'], 4),
+  person('organizer', ['Logistics', 'Hospitality'], 5),
+  person('organizer', ['Public Relations', 'Content'], 6),
+  person('organizer', ['Event Management', 'Coordination'], 7),
+  person('organizer', ['Student Activities', 'Support'], 8),
+
   person('judge', ['AI/ML', 'Product'], 1),
   person('judge', ['Security', 'Infra'], 2),
   person('judge', ['Venture', 'Startups'], 3),
@@ -34,16 +47,12 @@ export const people: Person[] = [
   person('speaker', ['AI agents'], 2),
   person('speaker', ['Careers', 'Hiring'], 3),
   person('speaker', ['Founders'], 4),
-
-  person('organizer', ['Lead', 'Operations'], 1),
-  person('organizer', ['Tech', 'Platform'], 2),
-  person('organizer', ['Design', 'Media'], 3),
-  person('organizer', ['Sponsorship', 'Outreach'], 4),
 ];
 
 export const roleTabs: { role: PersonRole; label: string }[] = [
+  { role: 'faculty', label: 'Faculty Coordinators' },
+  { role: 'organizer', label: 'Organizing Team' },
   { role: 'judge', label: 'Judges' },
   { role: 'mentor', label: 'Mentors' },
   { role: 'speaker', label: 'Speakers' },
-  { role: 'organizer', label: 'Organizing Team' },
 ];
