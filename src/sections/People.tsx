@@ -110,10 +110,10 @@ export function People() {
             id="people-panel"
             role="tabpanel"
             aria-labelledby={`role-tab-${role}`}
-            className="group relative mt-10 sm:mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)] motion-reduce:[mask-image:none]"
+            className="relative mt-10 sm:mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)] motion-reduce:[mask-image:none]"
           >
             <div
-              className="flex w-max animate-[marquee_var(--marquee-dur)_linear_infinite] py-3 group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none"
+              className="flex w-max animate-[marquee_var(--marquee-dur)_linear_infinite] py-3 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none"
               style={{ ['--marquee-dur' as string]: `${Math.max(25, list.length * 4.5)}s` }}
             >
               {/* Copy 1 */}
@@ -142,12 +142,14 @@ export function People() {
             id="people-panel"
             role="tabpanel"
             aria-labelledby={`role-tab-${role}`}
-            className="mt-10 sm:mt-14 mx-auto grid max-w-5xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-10 sm:mt-14 mx-auto flex flex-nowrap items-stretch justify-start sm:justify-center gap-6 sm:gap-8 max-w-5xl overflow-x-auto pb-4 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {list.map((p, i) => (
-              <Reveal key={p.name + p.role} i={i}>
-                <ProfileCard person={p} />
-              </Reveal>
+              <div key={p.name + p.role} className="w-[260px] xs:w-[280px] sm:w-[290px] md:w-[310px] shrink-0">
+                <Reveal i={i}>
+                  <ProfileCard person={p} centered />
+                </Reveal>
+              </div>
             ))}
           </div>
         ) : (
