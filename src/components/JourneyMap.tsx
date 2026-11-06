@@ -41,8 +41,9 @@ const DEFAULT_ROAD_DATA = {
     length: 962.4,
     checkpoints: [
       { x: 200, y: 50, right: false },
-      { x: 275, y: 240, right: true },
-      { x: 130, y: 440, right: false },
+      { x: 278, y: 224, right: true },
+      { x: 92, y: 360, right: false },
+      { x: 274, y: 502, right: true },
       { x: 200, y: 670, right: false },
     ],
   },
@@ -50,8 +51,9 @@ const DEFAULT_ROAD_DATA = {
     length: 797.4,
     checkpoints: [
       { x: 40, y: 96, right: false },
-      { x: 260, y: 55, right: false },
-      { x: 510, y: 95, right: false },
+      { x: 224, y: 42, right: false },
+      { x: 406, y: 117, right: false },
+      { x: 589, y: 45, right: false },
       { x: 780, y: 64, right: true },
     ],
   },

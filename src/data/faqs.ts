@@ -29,7 +29,7 @@ export const faqs: Faq[] = [
   {
     question: 'How are teams shortlisted?',
     answer:
-      'Submitted PPTs are reviewed by the organizing team between 10 and 16 November. Shortlisting is based on the quality and potential of the idea — its innovation, feasibility, relevance and impact. Results are announced between 16 and 18 November.',
+      'Submitted PPTs are reviewed by the organizing team between 14 and 17 November. Shortlisting is based on the quality and potential of the idea — its innovation, feasibility, relevance and impact. Final results are announced between 17 and 18 November.',
   },
   {
     question: 'What are the focus areas?',

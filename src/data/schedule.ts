@@ -5,10 +5,20 @@ export const schedule: ScheduleItem[] = [
   {
     round: 'Round 1',
     short: 'Register',
-    phase: 'Registration & PPT submission',
+    phase: 'Registration',
     date: '2 Nov – 16 Nov 2026',
     time: '12:00 PM → 11:59 PM',
-    description: 'Register your team on Unstop and submit your idea presentation for screening.',
+    description: 'Register your team on Unstop and prepare for the PPT submission round.',
+    points: [
+      'Two to four members per team, with at least one female member',
+      'Sign up on the Unstop portal before the deadline',
+    ],
+  },
+  {
+    short: 'Submission',
+    phase: 'PPT Submission Round',
+    date: '10 Nov – 13 Nov 2026',
+    description: 'Teams submit their idea presentation using the official template on Unstop.',
     points: [
       'Use the official PPT template — it will be published on the Unstop opportunity page',
       'Keep the submission clear, complete and structured as per the template',
@@ -16,15 +26,15 @@ export const schedule: ScheduleItem[] = [
   },
   {
     short: 'Screening',
-    phase: 'PPT screening',
-    date: '10 Nov – 16 Nov 2026',
+    phase: 'PPT Screening Round',
+    date: '14 Nov – 17 Nov 2026',
     description: 'The organizing team reviews every submission.',
     points: ['Shortlisting is based on the quality and potential of the idea — innovation, feasibility, relevance and impact'],
   },
   {
     short: 'Results',
-    phase: 'Results announced',
-    date: '16 Nov – 18 Nov 2026',
+    phase: 'Final Result Announcement',
+    date: '17 Nov – 18 Nov 2026',
     description: 'Shortlisted teams are announced and receive instructions for the final round.',
   },
   {
