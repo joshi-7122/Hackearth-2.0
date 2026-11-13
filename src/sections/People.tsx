@@ -133,9 +133,6 @@ export function People() {
                 ))}
               </div>
             </div>
-            <p className="mt-4 flex items-center justify-center gap-1.5 font-mono text-xs text-ink-subtle">
-              <span>Hover or focus cards to pause rotation</span>
-            </p>
           </div>
         ) : role === 'faculty' ? (
           <div

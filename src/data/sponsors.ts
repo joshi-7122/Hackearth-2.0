@@ -1,14 +1,15 @@
 import type { Sponsor } from '@/types';
 
 /**
- * Community partners shown in the Partners section.
- * To add a real partner: drop the logo in /public/sponsors/ and replace an
- * entry, e.g. { name: 'Acme Dev Club', tier: 'community', logo: '/sponsors/acme.svg', url: 'https://acme.dev' }.
- * Entries without `logo` render a neutral placeholder mark.
+ * Community partners shown in the Partners section (scrolling logo band).
+ * To add a partner: drop the logo in /public/sponsors/ and add an entry, e.g.
+ * { name: 'Acme Dev Club', tier: 'community', logo: '/sponsors/acme.webp', bg: '#000', url: 'https://acme.dev' }.
+ * `bg` should match the logo's own background so the tile looks seamless.
  */
 export const sponsors: Sponsor[] = [
-  { name: '[COMMUNITY PARTNER 1]', tier: 'community' },
-  { name: '[COMMUNITY PARTNER 2]', tier: 'community' },
-  { name: '[COMMUNITY PARTNER 3]', tier: 'community' },
-  { name: '[COMMUNITY PARTNER 4]', tier: 'community' },
+  { name: 'GRID', tier: 'community', logo: '/sponsors/grid.webp', bg: '#000' },
+  { name: 'NEXIDO', tier: 'community', logo: '/sponsors/nexido.webp', bg: '#000' },
+  { name: 'The Code Vibe', tier: 'community', logo: '/sponsors/the-code-vibe.webp', bg: '#000' },
+  { name: 'CampusUnite', tier: 'community', logo: '/sponsors/campusunite.webp', bg: '#fdfbf7' },
+  { name: 'Vortex Robotics', tier: 'community', logo: '/sponsors/vortex-robotics.webp', bg: '#000' },
 ];

@@ -17,10 +17,10 @@ export function Sponsors() {
             <PartnerMail />
           </div>
         </div>
+      </div>
 
-        <div className="mt-14">
-          <SponsorGrid />
-        </div>
+      <div className="mt-14">
+        <SponsorGrid />
       </div>
     </section>
   );

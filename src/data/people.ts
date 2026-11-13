@@ -1,53 +1,56 @@
-import type { Person, PersonRole, SocialLink } from '@/types';
+import type { Person, PersonRole } from '@/types';
 
-const placeholderSocials = (): SocialLink[] => [
-  { platform: 'linkedin', url: '[LINKEDIN URL]', label: 'LinkedIn' },
-  { platform: 'x', url: '[X URL]', label: 'X (Twitter)' },
-];
-
-const person = (role: PersonRole, focus: string[], n: number): Person => ({
+const person = (role: PersonRole, n: number): Person => ({
   name: `[${role.toUpperCase()} NAME ${n}]`,
   role,
-  designation: '[DESIGNATION]',
-  company: '[COMPANY]',
-  focus,
-  bio: '[SHORT BIO — one or two lines on what this person builds and what they can help teams with.]',
-  socials: placeholderSocials(),
+  designation: '[POSITION]',
+  linkedin: '[LINKEDIN URL]',
+});
+
+/** Organizer with a photo at /public/people/<slug>.webp; LinkedIn stays a placeholder until supplied. */
+const organizer = (name: string, designation: string, slug: string, linkedin = '[LINKEDIN URL]'): Person => ({
+  name,
+  role: 'organizer',
+  designation,
+  photo: `/people/${slug}.webp`,
+  linkedin,
 });
 
 /**
- * Replace with confirmed people. Add `photo: '/people/name.jpg'` (square,
- * ≥ 480px) to show a portrait; otherwise a generated avatar is used.
+ * Replace with confirmed people, e.g.
+ * { name: 'Jane Doe', role: 'organizer', designation: 'Tech Lead', photo: '/people/jane-doe.webp', linkedin: 'https://www.linkedin.com/in/janedoe' }
+ * Photos: portrait (4:5), ≥ 600px wide, in /public/people/. Without `photo` a generated avatar is shown.
  */
 export const people: Person[] = [
-  person('faculty', ['Branch Counselor', 'Advisory'], 1),
-  person('faculty', ['Faculty Advisor', 'WIE'], 2),
-  person('faculty', ['Faculty Coordinator', 'Academics'], 3),
-
-  person('organizer', ['Lead', 'Operations'], 1),
-  person('organizer', ['Tech', 'Platform'], 2),
-  person('organizer', ['Design', 'Media'], 3),
-  person('organizer', ['Sponsorship', 'Outreach'], 4),
-  person('organizer', ['Logistics', 'Hospitality'], 5),
-  person('organizer', ['Public Relations', 'Content'], 6),
-  person('organizer', ['Event Management', 'Coordination'], 7),
-  person('organizer', ['Student Activities', 'Support'], 8),
-
-  person('judge', ['AI/ML', 'Product'], 1),
-  person('judge', ['Security', 'Infra'], 2),
-  person('judge', ['Venture', 'Startups'], 3),
-  person('judge', ['Design', 'UX'], 4),
-
-  person('mentor', ['Backend', 'Cloud'], 1),
-  person('mentor', ['Frontend', 'Web'], 2),
-  person('mentor', ['Web3', 'Smart contracts'], 3),
-  person('mentor', ['Hardware', 'IoT'], 4),
-
-  person('speaker', ['Open source'], 1),
-  person('speaker', ['AI agents'], 2),
-  person('speaker', ['Careers', 'Hiring'], 3),
-  person('speaker', ['Founders'], 4),
+  ...[1, 2, 3].map((n) => person('faculty', n)),
+  organizer('Jatin Rathore', 'Organizer - CIS', 'jatin-rathore', 'https://www.linkedin.com/in/jatin-rathore-19610b411/'),
+  organizer('Aryan Joshi', 'Organizer - CIS', 'aryan-joshi', 'https://www.linkedin.com/in/aryan-joshi-71a9a620b/'),
+  organizer('Yatharth Saxena', 'Organizer - CIS', 'yatharth-saxena', 'https://www.linkedin.com/in/yatharthsaxena01/'),
+  organizer('Arnav Maitrey', 'Organizer - CIS', 'arnav-maitrey', 'https://www.linkedin.com/in/arnav-maitrey-374156386/'),
+  organizer('Rishabh Asthana', 'Organizer - CIS', 'rishabh-asthana', 'https://www.linkedin.com/in/rishabh-asthana-506814331/'),
+  organizer('Priyanshi Chaubey', 'Organizer - WIE', 'priyanshi-chaubey', 'https://www.linkedin.com/in/priyanshi-chaubey-90b46b373/'),
+  organizer('Kinjal Singh', 'Organizer - WIE', 'kinjal-singh', 'https://www.linkedin.com/in/kinjal-singh-040776322/'),
+  organizer('Dhwani Sharma', 'Organizer - WIE', 'dhwani-sharma', 'https://www.linkedin.com/in/dhwani-sharma-a01a37372/'),
+  organizer('Shriya Pandey', 'Organizer - WIE', 'shriya-pandey', 'https://www.linkedin.com/in/shriya-pandey-471175366/'),
+  organizer('Shruti Verma', 'Organizer - WIE', 'shruti-verma', 'https://www.linkedin.com/in/shruti-verma-609050350/'),
+  organizer('Tarun Kushwaha', 'Web Master - IEEE GUSB', 'tarun-kushwaha', 'https://www.linkedin.com/in/tarun-kushwaha-984b63326/'),
+  organizer('Atharav Singh', 'Treasurer - IEEE GUSB', 'atharav-singh', 'https://www.linkedin.com/in/atharav-singh-4163b0381/'),
+  organizer('Kritika Jha', 'Vice Chairperson - IEEE GUSB', 'kritika-jha', 'https://www.linkedin.com/in/kritika-jha-60a1752b4/'),
+  organizer('Mohammad Rahil', 'Secretary - IEEE GUSB', 'mohammad-rahil', 'https://www.linkedin.com/in/mohammad-rahil-1271a5328/'),
+  organizer('Ansh Vashisth', 'Chairperson - IEEE GUSB', 'ansh-vashisth', 'https://www.linkedin.com/in/ansh-vashisth00/'),
+  ...[1, 2, 3, 4].map((n) => person('judge', n)),
+  ...[1, 2, 3, 4].map((n) => person('mentor', n)),
+  ...[1, 2, 3, 4].map((n) => person('speaker', n)),
 ];
+
+/** Text printed in the bottom band of each person's card template. */
+export const roleLabels: Record<PersonRole, string> = {
+  faculty: 'Faculty Coordinator',
+  organizer: 'Organizer',
+  judge: 'Judge',
+  mentor: 'Mentor',
+  speaker: 'Speaker',
+};
 
 export const roleTabs: { role: PersonRole; label: string }[] = [
   { role: 'faculty', label: 'Faculty Coordinators' },

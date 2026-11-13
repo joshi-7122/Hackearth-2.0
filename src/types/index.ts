@@ -173,6 +173,8 @@ export interface Sponsor {
   tier: SponsorTier;
   /** Path under /public (e.g. "/sponsors/acme.svg"). Omit to show a placeholder mark. */
   logo?: string;
+  /** Tile background behind the logo, matching the logo's own backdrop (e.g. "#000"). */
+  bg?: string;
   url?: Text;
 }
 
@@ -187,13 +189,12 @@ export type PersonRole = 'faculty' | 'organizer' | 'judge' | 'mentor' | 'speaker
 export interface Person {
   name: Text;
   role: PersonRole;
+  /** Position / designation shown under the name. */
   designation: Text;
-  company: Text;
   /** Path under /public. Omit to render a generated avatar. */
   photo?: string;
-  focus: string[];
-  bio: Text;
-  socials: SocialLink[];
+  /** Full LinkedIn profile URL. */
+  linkedin: Text;
 }
 
 export interface Faq {

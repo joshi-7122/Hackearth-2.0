@@ -39,6 +39,7 @@
   --font-serif: 'Source Serif 4 Variable', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
   --font-sans: var(--font-serif);
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
+  --font-label: 'Oswald', 'Arial Narrow', Impact, sans-serif; /* people-card role band */
 
   /* Breakpoints (in addition to Tailwind defaults sm/md/lg/xl/2xl) */
   --breakpoint-xs: 25rem;
