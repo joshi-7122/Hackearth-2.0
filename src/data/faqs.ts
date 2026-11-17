@@ -14,7 +14,7 @@ export const faqs: Faq[] = [
   {
     question: 'How do we register?',
     answer:
-      'Register your team on Unstop between 2 November 2026 (12:00 PM) and 16 November 2026 (11:59 PM), then submit your idea PPT for the screening round.',
+      'Register your team on Unstop between 2 November 2026 (12:00 PM) and 18 November 2026 (02:00 PM), then submit your idea PPT for the screening round.',
   },
   {
     question: 'Is the event online or offline?',
@@ -33,7 +33,7 @@ export const faqs: Faq[] = [
   {
     question: 'How are teams shortlisted?',
     answer:
-      'Submitted PPTs are reviewed by the organizing team between 14 and 17 November. Shortlisting is based on the quality and potential of the idea — its innovation, feasibility, relevance and impact. Final results are announced between 17 and 18 November.',
+      'Submitted PPTs are reviewed by the organizing team between 18 and 19 November. Shortlisting is based on the quality and potential of the idea — its innovation, feasibility, relevance and impact. Final results are announced on 19 November (10:00 PM – 11:59 PM).',
   },
   {
     question: 'What are the focus areas?',

@@ -21,7 +21,7 @@ export function getRegistrationStatus(now = Date.now()): RegistrationStatus {
     return { state: 'upcoming', label: 'Registrations open 2 Nov, 12 PM', days: Math.ceil((opens - now) / DAY) };
   }
   if (now <= closes) {
-    return { state: 'open', label: 'Registrations open · closes 16 Nov', days: Math.ceil((closes - now) / DAY) };
+    return { state: 'open', label: 'Registrations open · closes 18 Nov', days: Math.ceil((closes - now) / DAY) };
   }
   return { state: 'closed', label: 'Registrations closed', days: null };
 }
