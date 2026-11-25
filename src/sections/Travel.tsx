@@ -83,7 +83,7 @@ export function Travel() {
           />
           <p className="max-w-sm text-ink-muted lg:pb-3">
             Made the shortlist? Here’s where you’ll stay, how you’ll reach the venue, and the one fee to
-            pay before the offline final on {hackathonInfo.dateShort}.
+            pay before the offline final ({hackathonInfo.dateShort}).
           </p>
         </div>
 

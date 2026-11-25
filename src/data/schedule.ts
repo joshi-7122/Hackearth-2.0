@@ -48,7 +48,7 @@ export const schedule: ScheduleItem[] = [
     round: 'Round 2',
     short: 'Final',
     phase: 'Final offline hackathon',
-    date: '29 – 30 Nov 2026',
+    date: 'Soon',
     time: '28 hrs · 12:00 PM onwards',
     description: 'Shortlisted teams build their solutions on campus at Galgotias University, Greater Noida.',
     points: ['Further details are shared directly with shortlisted teams'],

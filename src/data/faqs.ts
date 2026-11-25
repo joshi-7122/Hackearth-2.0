@@ -19,7 +19,7 @@ export const faqs: Faq[] = [
   {
     question: 'Is the event online or offline?',
     answer:
-      'Round 1 (registration and PPT submission) happens online via Unstop. Round 2, the final hackathon, is offline at Galgotias University, Greater Noida, on 29–30 November 2026.',
+      'Round 1 (registration and PPT submission) happens online via Unstop. Round 2, the final hackathon, is offline at Galgotias University, Greater Noida, soon.',
   },
   {
     question: 'What should we submit?',
